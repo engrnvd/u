@@ -1,6 +1,6 @@
 {
   "name": "nvd-u",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Dependency free vue components",
   "main": "index.ts",
   "scripts": {
