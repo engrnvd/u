@@ -1,0 +1,106 @@
+p {
+    line-height: 1.5;
+}
+
+// Alignment
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.text-wrap {
+    white-space: normal !important;
+}
+
+.text-nowrap {
+    white-space: nowrap !important;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Responsive alignment
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+// Transformation
+
+.text-lowercase {
+    text-transform: lowercase !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+
+.text-capitalize {
+    text-transform: capitalize !important;
+}
+
+// Weight and italics
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+.font-weight-light {
+    font-weight: $font-weight-light !important;
+}
+
+.font-weight-lighter {
+    font-weight: $font-weight-lighter !important;
+}
+
+.font-weight-normal {
+    font-weight: $font-weight-normal !important;
+}
+
+.font-weight-bold {
+    font-weight: $font-weight-bold !important;
+}
+
+.font-weight-bolder {
+    font-weight: $font-weight-bolder !important;
+}
+
+.font-italic {
+    font-style: italic !important;
+}
+
+// Contextual colors
+
+@each $color, $value in $theme-colors {
+    .text-#{$color} {
+        color: var(--#{$color});
+    }
+}
+
+.text-base {
+    color: var(--main-text-color) !important;
+}
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+.text-small {
+    font-size: 0.8rem;
+}
+
+.text-extra-small {
+    font-size: 0.6rem;
+}

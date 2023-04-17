@@ -1,0 +1,10 @@
+@function contrastColor($color) {
+    $result: invert($color);
+    $lightness: lightness($result);
+    @if ($lightness < 50) {
+        $result: var(--dark);
+    } @else {
+        $result: var(--light);
+    }
+    @return $result;
+}

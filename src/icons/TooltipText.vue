@@ -1,0 +1,37 @@
+<template>
+  <span :aria-hidden="!title"
+        :aria-label="title"
+        class="material-design-icon tooltip-text-icon"
+        role="img"
+        v-bind="$attrs"
+        @click="$emit('click', $event)">
+    <svg :fill="fillColor"
+         class="material-design-icon__svg"
+         :width="size"
+         :height="size"
+         viewBox="0 0 24 24">
+      <path d="M4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H16L12,22L8,18H4A2,2 0 0,1 2,16V4A2,2 0 0,1 4,2M5,5V7H19V5H5M5,9V11H15V9H5M5,13V15H17V13H5Z">
+        <title v-if="title">{{ title }}</title>
+      </path>
+    </svg>
+  </span>
+</template>
+
+<script>
+export default {
+  name: "TooltipTextIcon",
+  props: {
+    title: {
+      type: String,
+    },
+    fillColor: {
+      type: String,
+      default: "currentColor"
+    },
+    size: {
+
+      default: '1em'
+    }
+  }
+}
+</script>

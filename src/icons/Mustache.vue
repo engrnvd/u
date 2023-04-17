@@ -1,0 +1,37 @@
+<template>
+  <span :aria-hidden="!title"
+        :aria-label="title"
+        class="material-design-icon mustache-icon"
+        role="img"
+        v-bind="$attrs"
+        @click="$emit('click', $event)">
+    <svg :fill="fillColor"
+         class="material-design-icon__svg"
+         :width="size"
+         :height="size"
+         viewBox="0 0 24 24">
+      <path d="M21 12C19 12 18 9 15 9S12 11 12 11 12 9 9 9 5 12 3 12C2 12 1 11 1 11S2 16 6 16C11 16 12 13 12 13S13 16 18 16C22 16 23 11 23 11S22 12 21 12Z">
+        <title v-if="title">{{ title }}</title>
+      </path>
+    </svg>
+  </span>
+</template>
+
+<script>
+export default {
+  name: "MustacheIcon",
+  props: {
+    title: {
+      type: String,
+    },
+    fillColor: {
+      type: String,
+      default: "currentColor"
+    },
+    size: {
+
+      default: '1em'
+    }
+  }
+}
+</script>

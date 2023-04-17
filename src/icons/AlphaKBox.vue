@@ -1,0 +1,37 @@
+<template>
+  <span :aria-hidden="!title"
+        :aria-label="title"
+        class="material-design-icon alpha-k-box-icon"
+        role="img"
+        v-bind="$attrs"
+        @click="$emit('click', $event)">
+    <svg :fill="fillColor"
+         class="material-design-icon__svg"
+         :width="size"
+         :height="size"
+         viewBox="0 0 24 24">
+      <path d="M9,7V17H11V13.67L13,17H15L12,12L15,7H13L11,10.33V7H9M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3Z">
+        <title v-if="title">{{ title }}</title>
+      </path>
+    </svg>
+  </span>
+</template>
+
+<script>
+export default {
+  name: "AlphaKBoxIcon",
+  props: {
+    title: {
+      type: String,
+    },
+    fillColor: {
+      type: String,
+      default: "currentColor"
+    },
+    size: {
+
+      default: '1em'
+    }
+  }
+}
+</script>

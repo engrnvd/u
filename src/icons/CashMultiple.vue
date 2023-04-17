@@ -1,0 +1,37 @@
+<template>
+  <span :aria-hidden="!title"
+        :aria-label="title"
+        class="material-design-icon cash-multiple-icon"
+        role="img"
+        v-bind="$attrs"
+        @click="$emit('click', $event)">
+    <svg :fill="fillColor"
+         class="material-design-icon__svg"
+         :width="size"
+         :height="size"
+         viewBox="0 0 24 24">
+      <path d="M5,6H23V18H5V6M14,9A3,3 0 0,1 17,12A3,3 0 0,1 14,15A3,3 0 0,1 11,12A3,3 0 0,1 14,9M9,8A2,2 0 0,1 7,10V14A2,2 0 0,1 9,16H19A2,2 0 0,1 21,14V10A2,2 0 0,1 19,8H9M1,10H3V20H19V22H1V10Z">
+        <title v-if="title">{{ title }}</title>
+      </path>
+    </svg>
+  </span>
+</template>
+
+<script>
+export default {
+  name: "CashMultipleIcon",
+  props: {
+    title: {
+      type: String,
+    },
+    fillColor: {
+      type: String,
+      default: "currentColor"
+    },
+    size: {
+
+      default: '1em'
+    }
+  }
+}
+</script>

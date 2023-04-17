@@ -1,0 +1,16 @@
+@use 'sass:color';
+
+@mixin light-n-dark-variants($color, $value) {
+    --#{$color}: #{$value};
+    @if ($color != light and $color != dark) {
+        @if ($color == secondary) {
+            --#{$color}-lighter: #{$value};
+            --#{$color}-light: #{$value};
+        } @else {
+            --#{$color}-lighter: #{color.adjust($value, $alpha: -0.7)};
+            --#{$color}-light: #{color.adjust($value, $alpha: -0.4)};
+        }
+        --#{$color}-dark: #{color.adjust($value, $lightness: -5%)};
+        --#{$color}-darker: #{color.adjust($value, $lightness: -10%)};
+    }
+}

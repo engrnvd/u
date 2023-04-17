@@ -1,0 +1,37 @@
+<template>
+  <span :aria-hidden="!title"
+        :aria-label="title"
+        class="material-design-icon merge-icon"
+        role="img"
+        v-bind="$attrs"
+        @click="$emit('click', $event)">
+    <svg :fill="fillColor"
+         class="material-design-icon__svg"
+         :width="size"
+         :height="size"
+         viewBox="0 0 24 24">
+      <path d="M8 17L12 13H15.2C15.6 14.2 16.7 15 18 15C19.7 15 21 13.7 21 12S19.7 9 18 9C16.7 9 15.6 9.8 15.2 11H12L8 7V3H3V8H6L10.2 12L6 16H3V21H8V17Z">
+        <title v-if="title">{{ title }}</title>
+      </path>
+    </svg>
+  </span>
+</template>
+
+<script>
+export default {
+  name: "MergeIcon",
+  props: {
+    title: {
+      type: String,
+    },
+    fillColor: {
+      type: String,
+      default: "currentColor"
+    },
+    size: {
+
+      default: '1em'
+    }
+  }
+}
+</script>

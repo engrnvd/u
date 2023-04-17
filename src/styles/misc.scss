@@ -1,0 +1,52 @@
+.router-link-active {
+    border-bottom: 1px solid currentColor;
+}
+
+.material-design-icon {
+    display: inline-flex;
+    align-self: center;
+    position: relative;
+    height: 1em;
+    width: 1em;
+}
+
+.material-design-icon > .material-design-icon__svg {
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.separator {
+    width: 1px;
+    height: 1em;
+    margin: 0 0.5em;
+    background-color: var(--border-color);
+}
+
+.hover-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    left: 0;
+    top: 0;
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.has-hover {
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}

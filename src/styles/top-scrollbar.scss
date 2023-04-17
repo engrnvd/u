@@ -1,0 +1,8 @@
+.top-scrollbar {
+    overflow-x: auto;
+    transform: rotateX(180deg);
+
+    .top-scrollbar-content {
+        transform: rotateX(180deg);
+    }
+}

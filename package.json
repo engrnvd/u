@@ -1,0 +1,21 @@
+{
+  "name": "u",
+  "version": "1.0.0",
+  "description": "Dependency free vue components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Naveed ul Hassan Malik",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3"
+  },
+  "devDependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/engrnvd/u"
+  },
+  "homepage": "https://github.com/engrnvd/u"
+}

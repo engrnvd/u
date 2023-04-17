@@ -1,0 +1,44 @@
+@use 'sass:color';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import "./variables";
+
+:root {
+    --font: #{$font};
+    --font-size: #{$fontSize};
+    --bg: #{$bg};
+    --body-bg: #{$body-bg};
+    --gray: rgba(0, 0, 0, 0.2);
+    --gray-hover: rgba(0, 0, 0, 0.25);
+    --main-text-color: #{$main-text-color};
+    --main-text-color-contrast: #{color.invert($main-text-color)};
+    --muted: #{$muted};
+    --disabled-bg: #{$disabled-bg};
+    --disabled-text-color: #{$disabled-text-color};
+    --border-radius: #{$border-radius};
+    --border-color: #e6e6e6;
+    --shadow-0: #{$shadow-0};
+    --shadow-1: #{$shadow-1};
+    --shadow-raised: #{$shadow-raised};
+    --form-element-height: 2.75rem;
+    --form-element-border-radius: 0.5em;
+    --ripple-light: rgba(255, 255, 255, 0.3);
+    --ripple-dark: rgba(0, 0, 0, 0.2);
+
+    @each $color, $value in $theme-colors {
+        @include light-n-dark-variants($color, $value);
+    }
+}
+
+[data-theme="dark"] {
+    $dark-bg: #50565e;
+    --body-bg: #{$dark-bg};
+    --bg: #{color.adjust($dark-bg, $lightness: 3%)};
+    --muted: #9fa8af;
+    --main-text-color: #eee;
+    --main-text-color-contrast: #{color.invert(#eee)};
+    --ripple-light: var(--ripple-dark);
+    --disabled-bg: #5f6770;
+    --border-color: #9fa8af44;
+    @include light-n-dark-variants('primary', color.adjust($primary, $lightness: 15%));
+    @include light-n-dark-variants('danger', color.adjust($danger, $lightness: 22%));
+}

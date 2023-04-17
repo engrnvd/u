@@ -1,0 +1,25 @@
+.u-tooltip {
+    position: absolute;
+    white-space: nowrap;
+    left: 10%;
+    top: 100%;
+    z-index: 99;
+    padding: 0.5em;
+    font-size: 0.75rem;
+    background-color: #334049f6;
+    color: var(--light);
+    border-radius: 0.25rem;
+    max-width: 25em;
+    transition: opacity 250ms ease-in;
+    user-select: none;
+    text-transform: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.u-tooltip-parent:hover {
+    .u-tooltip {
+        opacity: 1;
+        visibility: visible;
+    }
+}
