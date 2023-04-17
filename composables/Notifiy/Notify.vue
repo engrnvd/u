@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import AlertCircleIcon from "@/material-design-icons/AlertCircle.vue"
-import CheckCircleIcon from '@/material-design-icons/CheckCircle.vue'
-import InformationIcon from "@/material-design-icons/Information.vue"
+import AlertCircleIcon from '../../icons/AlertCircle.vue'
+import CheckCircleIcon from '../../icons/CheckCircle.vue'
+import InformationIcon from '../../icons/Information.vue'
 
 export default {
     components: { InformationIcon, AlertCircleIcon, CheckCircleIcon },
