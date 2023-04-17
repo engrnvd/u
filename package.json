@@ -2,7 +2,7 @@
   "name": "nvd-u",
   "version": "1.0.0",
   "description": "Dependency free vue components",
-  "main": "index.js",
+  "main": "src/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
