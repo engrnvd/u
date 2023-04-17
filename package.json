@@ -1,5 +1,5 @@
 {
-  "name": "u",
+  "name": "nvd-u",
   "version": "1.0.0",
   "description": "Dependency free vue components",
   "main": "index.js",
