@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import UDropdown from './UDropdown.vue'
-import { useStorage } from 'src/composables/useStorage'
+import { useStorage } from 'nvd-use-storage'
 import CloseIcon from '../icons/Close.vue'
 import { defineProps, watchEffect } from 'vue'
 
