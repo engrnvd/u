@@ -51,6 +51,10 @@ export default {
             type: Boolean,
             default: false
         },
+        dontCloseOnCancel: {
+            type: Boolean,
+            default: false
+        },
         okDisabled: {
             type: Boolean,
             default: false
@@ -87,7 +91,7 @@ export default {
         },
         cancel() {
             this.$emit('cancel')
-            this.hideModal()
+            if (!this.dontCloseOnCancel) this.hideModal()
         },
         hideModal() {
             this.$emit('update:modelValue', false)
