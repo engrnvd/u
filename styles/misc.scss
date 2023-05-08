@@ -54,6 +54,6 @@
 @each $color, $value in $theme-colors {
     .bg-#{$color} {
         background-color: var(--#{$color});
-        color: contrastColor($color);
+        color: contrastColor($value);
     }
 }
