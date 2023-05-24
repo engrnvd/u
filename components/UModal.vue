@@ -124,7 +124,7 @@ export default {
     background-color: var(--bg);
     width: 32rem;
     max-width: 96vw;
-    border-radius: 0.5em;
+    border-radius: var(--border-radius);
     position: relative;
 
     &.modal-sm {

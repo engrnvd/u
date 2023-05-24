@@ -51,7 +51,7 @@ const emit = defineEmits([...inputEmits])
 
         .u-input {
             border: var(--u-input-border-width) solid var(--u-input-border-color);
-            border-radius: var(--border-radius);
+            border-radius: var(--form-element-border-radius);
             height: var(--form-element-height);
             padding: var(--u-input-padding);
             outline: none;

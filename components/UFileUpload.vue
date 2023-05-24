@@ -133,7 +133,7 @@ const emit = defineEmits(['change'])
 .file-dropzone {
     color: var(--muted);
     border: var(--u-input-border-width) solid var(--u-input-border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--form-element-border-radius);
     display: block;
     margin: 2em 0 0.5em;
     position: relative;

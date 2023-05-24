@@ -74,7 +74,7 @@ defineExpose({ ddEl })
     .u-dropdown-content {
         position: absolute;
         background-color: var(--bg);
-        border-radius: var(--border-radius);
+        border-radius: var(--form-element-border-radius);
         z-index: 9;
         top: $offset;
 

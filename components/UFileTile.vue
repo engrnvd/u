@@ -32,7 +32,7 @@ const emit = defineEmits(['delete'])
 .file-tile {
     background: var(--bg);
     color: var(--main-text-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--form-element-border-radius);
     box-shadow: var(--shadow-1);
     z-index: 100;
 }
