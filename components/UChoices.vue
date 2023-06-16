@@ -7,7 +7,8 @@ import { computed, defineProps } from 'vue'
 const props = defineProps({
     ...inputProps,
     choices: { type: Array, default: () => [] },
-    multiple: { type: Boolean, default: false }
+    multiple: { type: Boolean, default: false },
+    labelKey: { type: String, required: false, default: null },
 })
 const emit = defineEmits([...inputEmits])
 
@@ -43,9 +44,8 @@ function onClick(choice) {
                 v-for="choice in choices"
                 @click="onClick(choice)"
                 :color="isSelected(choice) ? 'primary' : ''">
-                {{ choice }}
+                {{ labelKey ? choice[labelKey] : choice }}
             </UChip>
         </div>
     </UInput>
 </template>
-
