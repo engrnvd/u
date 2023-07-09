@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ArrowRightIcon from '../icons/ChevronRight.vue'
 import { onMounted, ref, watch } from 'vue'
 
 const props = defineProps<{
@@ -28,10 +29,11 @@ onMounted(updateHeight)
 
 <template>
     <div class="u-accordion card">
-        <div class="header has-hover p-3 align-items-center"
+        <div class="header has-hover p-3 align-items-center d-flex justify-content-between align-items-center"
              :class="{'border-b1': modelValue === value}"
              @click="toggle">
-            {{ label || value }}
+            <div>{{ label || value }}</div>
+            <ArrowRightIcon class="icon" :class="{'opened': modelValue === value}"/>
         </div>
         <div ref="bodyEl" class="body">
             <slot></slot>
@@ -47,6 +49,14 @@ onMounted(updateHeight)
 
     .header {
         cursor: pointer;
+
+        .icon {
+            transition: transform 0.25s;
+
+            &.opened {
+                transform: rotate(90deg);
+            }
+        }
     }
 
     .body {
