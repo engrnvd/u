@@ -34,7 +34,6 @@ const selected = ref(examples[1].label)
 <template>
     <UAccordion
         v-for="(example, idx) in examples"
-        :label="example.label"
         :value="example.label"
         v-model="selected"
     >

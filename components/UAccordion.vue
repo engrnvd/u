@@ -3,7 +3,7 @@ import { onMounted, ref, watch } from 'vue'
 
 const props = defineProps<{
     modelValue: any,
-    label: string,
+    label?: string,
     value: any,
 }>()
 const emit = defineEmits(['update:modelValue'])
@@ -31,7 +31,7 @@ onMounted(updateHeight)
         <div class="header has-hover p-3 align-items-center"
              :class="{'border-b1': modelValue === value}"
              @click="toggle">
-            {{ label }}
+            {{ label || value }}
         </div>
         <div ref="bodyEl" class="body">
             <slot></slot>
@@ -43,7 +43,7 @@ onMounted(updateHeight)
 .u-accordion {
     border-radius: var(--border-radius);
     overflow: hidden;
-    margin-block: 0.5em;
+    margin: 0.5em 0;
 
     .header {
         cursor: pointer;
