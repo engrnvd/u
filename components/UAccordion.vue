@@ -1,0 +1,59 @@
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue'
+
+const props = defineProps<{
+    modelValue: any,
+    label: string,
+    value: any,
+}>()
+const emit = defineEmits(['update:modelValue'])
+const bodyEl = ref()
+
+function toggle() {
+    let emittedValue = props.modelValue === props.value ? null : props.value
+    emit('update:modelValue', emittedValue)
+}
+
+function updateHeight() {
+    if (props.modelValue === props.value) {
+        bodyEl.value.style.height = `${bodyEl.value.scrollHeight}px`
+    } else {
+        bodyEl.value.style.height = 0
+    }
+}
+
+watch(() => props.modelValue, updateHeight)
+onMounted(updateHeight)
+</script>
+
+<template>
+    <div class="u-accordion card">
+        <div class="header has-hover p-3 align-items-center"
+             :class="{'border-b1': modelValue === value}"
+             @click="toggle">
+            {{ label }}
+        </div>
+        <div ref="bodyEl" class="body">
+            <slot></slot>
+        </div>
+    </div>
+</template>
+
+<style lang="scss">
+.u-accordion {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-block: 0.5em;
+
+    .header {
+        cursor: pointer;
+    }
+
+    .body {
+        position: relative;
+        padding: 0;
+        height: 0;
+        transition: height 0.25s;
+    }
+}
+</style>

@@ -5,6 +5,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/accordion',
+      component: () => import('../views/Accordion.vue')
+    },
+    {
       path: '/buttons',
       component: () => import('../views/Buttons.vue')
     },
