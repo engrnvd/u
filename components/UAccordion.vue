@@ -32,7 +32,9 @@ onMounted(updateHeight)
         <div class="header has-hover p-3 align-items-center d-flex justify-content-between align-items-center"
              :class="{'border-b1': modelValue === value}"
              @click="toggle">
-            <div>{{ label || value }}</div>
+            <div>
+                <slot name="header">{{ label || value }}</slot>
+            </div>
             <ArrowRightIcon class="icon" :class="{'opened': modelValue === value}"/>
         </div>
         <div ref="bodyEl" class="body">
