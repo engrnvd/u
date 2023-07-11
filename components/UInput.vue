@@ -62,6 +62,10 @@ const emit = defineEmits([...inputEmits])
             color: var(--u-input-text-color);
             width: 100%;
 
+            &:disabled {
+                --u-input-text-color: var(--muted);
+            }
+
             &::placeholder {
                 color: transparent;
             }
