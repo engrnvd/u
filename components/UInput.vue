@@ -3,7 +3,8 @@ import { inputEmits, inputProps } from '../helpers/input-helper'
 import { defineProps } from 'vue'
 
 defineProps({
-    ...inputProps
+    ...inputProps,
+    disabled: Boolean,
 })
 
 const emit = defineEmits([...inputEmits])
@@ -19,6 +20,7 @@ const emit = defineEmits([...inputEmits])
                     :type="type"
                     :placeholder="label"
                     :value="modelValue"
+                    :disabled="disabled"
                     @input="e => emit('update:modelValue', e.target.value)">
                 <label v-if="label">{{ label }}</label>
             </slot>
