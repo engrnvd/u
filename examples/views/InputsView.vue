@@ -35,6 +35,7 @@ const v = useValidator(form, v => {
     v.addRule(minLengthRule('password', 5))
     v.addRule(requiredRule('re_password'))
     v.addRule(requiredRule('agreement'))
+    v.addRule(requiredRule('fruit'))
     v.addCustomRule('re_password', 'Passwords must match', () => form.password === form.re_password)
 })
 
@@ -62,6 +63,7 @@ const v = useValidator(form, v => {
                 v-model="form.fruit"
                 label="Fruit"
                 :options="fruits"
+                :errors="v.errors.fruit"
             />
 
             <UFileUpload :files="form.files" accept="image/*"/>

@@ -52,12 +52,15 @@ const emit = defineEmits([...inputEmits])
 <template>
     <UDropdown class="u-select" ref="uSelectEl">
         <UInput
+            :class="{'has-error': errors.length}"
             v-if="modelValue && !query"
             :model-value="modelValue"
             :label="label"
             @keydown="selectedOptionEdited"
         />
-        <UInput v-else v-model="query" :label="label"/>
+        <UInput :class="{'has-error': errors.length}" v-else v-model="query" :label="label"/>
+
+        <div class="text-small text-danger p-2" v-for="error in errors">{{ error }}</div>
 
         <div class="controls d-flex align-items-center gap-2">
             <MenuDownIcon class="caret-icon"/>
