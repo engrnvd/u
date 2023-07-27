@@ -20,7 +20,9 @@ const ddEl = ref()
 const open = ref(false)
 
 function close() {
+    if (!open.value) return
     open.value = false
+    emit('closed')
 }
 
 useOutsideClick(ddEl, close)
@@ -33,7 +35,9 @@ function onMouseLeave() {
     if (props.trigger === 'hover') close()
 }
 
-defineExpose({ ddEl })
+defineExpose({ ddEl, open })
+
+let emit = defineEmits(['closed'])
 
 </script>
 

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 
+import { ref } from 'vue'
 import ArrowDownLeftIcon from '../../icons/ArrowDownLeft.vue'
 import ArrowDownRightIcon from '../../icons/ArrowDownRight.vue'
 import ArrowTopLeftIcon from '../../icons/ArrowTopLeft.vue'
@@ -7,24 +8,35 @@ import ArrowTopRightIcon from '../../icons/ArrowTopRight.vue'
 import { randomArrayItem } from 'nvd-js-helpers/misc'
 import UDropdown from '../../components/UDropdown.vue'
 import UIconBtn from '../../components/UIconBtn.vue'
+import UButton from '../../components/UButton.vue'
 
 const options = ['🍎', '🍐', '🍊', '🍋', '🍒', '🍑', '🍓', '🍅', '🍍']
 
+let dd1 = ref()
+
+function onClose() {
+    console.log('closed!')
+}
 </script>
 
 <template>
     <div class="grid">
-        <div>
-            <UDropdown>
-                <UIconBtn>
-                    <ArrowDownRightIcon/>
-                </UIconBtn>
-                <template #content>
-                    <div class="p-4">
-                        <div class="my-2" v-for="n in 4">{{ randomArrayItem(options) }}</div>
-                    </div>
-                </template>
-            </UDropdown>
+        <div class="d-flex gap-8">
+            <div>
+                <UDropdown ref="dd1" @closed="onClose">
+                    <UIconBtn>
+                        <ArrowDownRightIcon/>
+                    </UIconBtn>
+                    <template #content>
+                        <div class="p-4">
+                            <div class="my-2" v-for="n in 4">{{ randomArrayItem(options) }}</div>
+                        </div>
+                    </template>
+                </UDropdown>
+            </div>
+            <div v-if="dd1">
+                <UButton @click="dd1.open = true">Open</UButton>
+            </div>
         </div>
         <div>
             <UDropdown left>
