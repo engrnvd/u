@@ -57,10 +57,12 @@ watchEffect(() => {
 
 <template>
     <UDropdown :auto-close="false" class="apm-color-picker" :class="variant" v-bind="$attrs">
-        <a class="apc-button"
-           href="#"
-           :style="{backgroundColor: modelValue || 'transparent'}">
-        </a>
+        <slot>
+            <a class="apc-button"
+               href="#"
+               :style="{backgroundColor: modelValue || 'transparent'}">
+            </a>
+        </slot>
         <template #content>
             <div class="apc-dropdown">
                 <UMenuItem

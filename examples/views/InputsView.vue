@@ -13,6 +13,8 @@ import { useValidator } from '../Vee/useValidator'
 import { reactive } from 'vue'
 import UButton from '../../components/UButton.vue'
 import UInput from '../../components/UInput.vue'
+import FormatColorFill from '../../icons/FormatColorFill.vue'
+import FormatColorText from '../../icons/FormatColorText.vue'
 
 const form = reactive({
     email: '',
@@ -88,8 +90,22 @@ const v = useValidator(form, v => {
             <UColorPicker
                 v-model="form.color"
                 variant="classic"
-                class="mb-4"
-            />
+                class="mb-4">
+                <a href="#">
+                    <FormatColorFill/>
+                    <div :style="{backgroundColor: form.color}" style="width: 100%; height: 0.25em"></div>
+                </a>
+            </UColorPicker>
+
+            <UColorPicker
+                v-model="form.color"
+                variant="classic"
+                class="mb-4">
+                <div href="#">
+                    <FormatColorText/>
+                    <div :style="{backgroundColor: form.color}" style="width: 100%; height: 0.25em"></div>
+                </div>
+            </UColorPicker>
 
             <UChoices
                 v-model="form.fruits"
