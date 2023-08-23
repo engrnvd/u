@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import UColorPicker from '../../components/UColorPicker.vue'
 import UCheckbox from '../../components/UCheckbox.vue'
 import UChoices from '../../components/UChoices.vue'
 import UFileUpload from '../../components/UFileUpload.vue'
@@ -24,6 +25,7 @@ const form = reactive({
     fruit: '',
     about: '',
     files: [],
+    color: '#9fd',
 })
 
 const fruits = ['Apple', 'Mango', 'Grapes', 'Banana']
@@ -80,6 +82,15 @@ const v = useValidator(form, v => {
                 v-model="form.lights"
                 :errors="v.errors.lights"
             />
+
+            <UColorPicker v-model="form.color" class="mb-4"/>
+
+            <UColorPicker
+                v-model="form.color"
+                variant="classic"
+                class="mb-4"
+            />
+
             <UChoices
                 v-model="form.fruits"
                 class="mb-4"
