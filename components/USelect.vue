@@ -54,7 +54,7 @@ const emit = defineEmits([...inputEmits])
         <UInput
             :class="{'has-error': errors.length}"
             v-if="modelValue && !query"
-            :model-value="modelValue"
+            :model-value="getLabel(modelValue)"
             :label="label"
             @keydown="selectedOptionEdited"
         />

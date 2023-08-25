@@ -28,9 +28,11 @@ const form = reactive({
     about: '',
     files: [],
     color: '#9fd',
+    person: null,
 })
 
 const fruits = ['Apple', 'Mango', 'Grapes', 'Banana']
+const people = reactive([{ id: 1, name: 'Naveed' }, { id: 2, name: 'Ayeza' }, { id: 3, name: 'Fatima' }])
 
 const v = useValidator(form, v => {
     v.addRule(requiredRule('email'))
@@ -66,8 +68,17 @@ const v = useValidator(form, v => {
             <USelect
                 v-model="form.fruit"
                 label="Fruit"
+                class="mb-4"
                 :options="fruits"
                 :errors="v.errors.fruit"
+            />
+
+            <USelect
+                v-model="form.person"
+                label="Options as objects"
+                :options="people"
+                :label-fn="p => p.name"
+                :errors="v.errors.person"
             />
 
             <UFileUpload :files="form.files" accept="image/*"/>
