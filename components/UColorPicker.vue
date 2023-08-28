@@ -122,12 +122,12 @@ watchEffect(() => {
             width: 16.4rem;
 
             .menu-item {
-                padding: 0.5em !important;
-                gap: 0.5em !important;
+                padding: 0.5rem !important;
+                gap: 0.5rem !important;
             }
 
             .color-list {
-                gap: 0.2em;
+                gap: 0.2rem;
 
                 .color-item {
                     width: 1.25rem;
@@ -149,7 +149,7 @@ watchEffect(() => {
 
     .apc-dropdown {
         width: 9.5rem;
-        padding: 1em;
+        padding: 1rem;
 
         .color-input {
             width: 100%;
@@ -158,7 +158,7 @@ watchEffect(() => {
         .color-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5em;
+            gap: 0.5rem;
 
             .color-item {
                 width: 1.5rem;
