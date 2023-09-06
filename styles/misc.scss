@@ -46,9 +46,12 @@
 }
 
 .has-hover {
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-    }
+    @include has-hover;
+}
+
+.clickable {
+    cursor: pointer;
+    @include has-hover;
 }
 
 @each $color, $value in $theme-colors {

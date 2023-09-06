@@ -29,7 +29,7 @@ onMounted(updateHeight)
 
 <template>
     <div class="u-accordion card">
-        <div class="header has-hover p-3 align-items-center d-flex justify-content-between align-items-center"
+        <div class="header clickable p-3 align-items-center d-flex justify-content-between align-items-center"
              :class="{'border-b1': modelValue === value}"
              @click="toggle">
             <div>
@@ -50,8 +50,6 @@ onMounted(updateHeight)
     margin: 0.5em 0;
 
     .header {
-        cursor: pointer;
-
         .icon {
             transition: transform 0.25s;
 

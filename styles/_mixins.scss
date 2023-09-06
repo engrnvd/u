@@ -14,3 +14,9 @@
         --#{$color}-darker: #{color.adjust($value, $lightness: -10%)};
     }
 }
+
+@mixin has-hover {
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
