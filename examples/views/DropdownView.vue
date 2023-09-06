@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import ArrowDownLeftIcon from '../../icons/ArrowDownLeft.vue'
 import ArrowDownRightIcon from '../../icons/ArrowDownRight.vue'
 import ArrowTopLeftIcon from '../../icons/ArrowTopLeft.vue'
@@ -13,6 +13,9 @@ import UButton from '../../components/UButton.vue'
 const options = ['🍎', '🍐', '🍊', '🍋', '🍒', '🍑', '🍓', '🍅', '🍍']
 
 let dd1 = ref()
+let state = reactive({
+    dd2: true
+})
 
 function onClose() {
     console.log('closed!')
@@ -38,17 +41,20 @@ function onClose() {
                 <UButton @click="dd1.open = true">Open</UButton>
             </div>
         </div>
-        <div>
-            <UDropdown left>
-                <UIconBtn>
-                    <ArrowDownLeftIcon/>
-                </UIconBtn>
-                <template #content>
-                    <div class="p-4">
-                        <div class="my-2" v-for="n in 4">{{ randomArrayItem(options) }}</div>
-                    </div>
-                </template>
-            </UDropdown>
+        <div class="d-flex gap-8">
+            <UButton @click="state.dd2 = !state.dd2">toggle</UButton>
+            <div>
+                <UDropdown left v-model="state.dd2">
+                    <UIconBtn>
+                        <ArrowDownLeftIcon/>
+                    </UIconBtn>
+                    <template #content>
+                        <div class="p-4">
+                            <div class="my-2" v-for="n in 4">{{ randomArrayItem(options) }}</div>
+                        </div>
+                    </template>
+                </UDropdown>
+            </div>
         </div>
         <div>
             <UDropdown up>

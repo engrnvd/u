@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { useOutsideClick } from '../composables/useOutsideClick'
-import { defineProps, ref } from 'vue'
+import { computed, defineProps, ref } from 'vue'
 
 type Trigger = 'click' | 'hover'
 
 const props = withDefaults(defineProps<{
+    modelValue?: any,
     left?: boolean,
     right?: boolean,
     down?: boolean,
@@ -17,7 +18,15 @@ const props = withDefaults(defineProps<{
 })
 
 const ddEl = ref()
-const open = ref(false)
+const _open: { value: boolean } = ref(false)
+const open = computed({
+    get() {
+        return props.modelValue !== undefined ? props.modelValue : _open.value
+    },
+    set(v: boolean) {
+        props.modelValue !== undefined ? emit('update:modelValue', v) : _open.value = v
+    },
+})
 
 function close() {
     if (!open.value) return
@@ -37,7 +46,7 @@ function onMouseLeave() {
 
 defineExpose({ ddEl, open })
 
-let emit = defineEmits(['closed'])
+let emit = defineEmits(['closed', 'update:modelValue'])
 
 </script>
 
