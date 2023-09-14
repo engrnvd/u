@@ -1,47 +1,47 @@
 <template>
     <UModal
-        :title="title"
-        v-model="open"
-        :ok-title="okTitle"
-        :cancel-title="cancelTitle"
+        v-model="confirmModalProps.open"
         @ok="onOk"
         @cancel="onCancel"
-        :class="classes"
-    >
-        <div v-html="message"></div>
+        :class="confirmModalProps.classes"
+        v-bind="uModalProps">
+        <div v-html="confirmModalProps.message"></div>
     </UModal>
 </template>
-
-<script>
-import UModal from "../../components/UModal.vue"
+<script lang="ts">
+import { UModalProps } from '../../components/UModal.vue'
+import { ConfirmModalProps } from '../../types/misc-types'
+import UModal from '../../components/UModal.vue'
 
 export default {
-    name: "ConfirmModal",
+    name: 'ConfirmModal',
     components: { UModal },
     data: () => ({
-        title: '',
-        open: false,
-        message: '',
-        okTitle: 'Yes',
-        cancelTitle: 'No',
-        onClose: null,
-        classes: ['confirm-modal'],
+        uModalProps: {
+            title: '',
+            okTitle: 'Yes',
+            cancelTitle: 'No',
+        } as UModalProps,
+        confirmModalProps: {
+            open: false,
+            message: '',
+            classes: ['confirm-modal'],
+            onClose: null,
+        } as ConfirmModalProps,
     }),
     methods: {
-        setData(dataProps = {}) {
+        setData(dataProps: ConfirmModalProps & UModalProps = {}) {
             for (let prop in dataProps) {
-                this[prop] = dataProps[prop]
+                if (this.confirmModalProps.hasOwnProperty(prop)) this.confirmModalProps[prop] = dataProps[prop]
+                else this.uModalProps[prop] = dataProps[prop]
             }
         },
         onOk() {
-            if (this.onClose) this.onClose(true)
+            if (this.confirmModalProps.onClose) this.confirmModalProps.onClose(true)
         },
         onCancel() {
-            if (this.onClose) this.onClose(false)
+            if (this.confirmModalProps.onClose) this.confirmModalProps.onClose(false)
         },
     },
 }
 </script>
-
-<style scoped>
-</style>

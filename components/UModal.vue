@@ -1,3 +1,54 @@
+<script setup lang="ts">
+import CloseIcon from '../icons/Close.vue'
+import UButton from './UButton.vue'
+
+export interface UModalProps {
+    title?: string,
+    modelValue?: boolean,
+    okTitle?: string,
+    cancelTitle?: string,
+    dontCloseOnOk?: boolean,
+    dontCloseOnCancel?: boolean,
+    okDisabled?: boolean,
+    okLoading?: boolean,
+    okOnly?: boolean,
+    cancelOnly?: boolean,
+    noFooter?: boolean,
+    size?: 'sm' | 'md' | 'lg' | 'xlg',
+    bodyClass?: string,
+}
+
+const p = withDefaults(defineProps<UModalProps>(), {
+    okTitle: 'Ok',
+    cancelTitle: 'Cancel',
+    size: 'md',
+    noFooter: false,
+    cancelOnly: false,
+    dontCloseOnOk: false,
+    dontCloseOnCancel: false,
+    okDisabled: false,
+    okLoading: false,
+    okOnly: false,
+})
+
+const emit = defineEmits(['ok', 'cancel', 'update:modelValue'])
+
+function ok() {
+    emit('ok')
+    if (!p.dontCloseOnOk) hideModal()
+}
+
+function cancel() {
+    emit('cancel')
+    if (!p.dontCloseOnCancel) hideModal()
+}
+
+function hideModal() {
+    emit('update:modelValue', false)
+}
+
+</script>
+
 <template>
     <transition name="fade">
         <div class="apm-modal-parent all-center" v-show="modelValue">
@@ -29,76 +80,6 @@
         </div>
     </transition>
 </template>
-
-<script>
-
-import CloseIcon from "../icons/Close.vue"
-import UButton from "./UButton.vue"
-
-export default {
-    name: "UModal",
-    components: { CloseIcon, UButton },
-    props: {
-        title: {},
-        modelValue: {},
-        okTitle: {
-            default: 'Ok'
-        },
-        cancelTitle: {
-            default: 'Cancel'
-        },
-        dontCloseOnOk: {
-            type: Boolean,
-            default: false
-        },
-        dontCloseOnCancel: {
-            type: Boolean,
-            default: false
-        },
-        okDisabled: {
-            type: Boolean,
-            default: false
-        },
-        okLoading: {
-            type: Boolean,
-            default: false
-        },
-        okOnly: {
-            type: Boolean,
-            default: false
-        },
-        cancelOnly: {
-            type: Boolean,
-            default: false
-        },
-        noFooter: {
-            type: Boolean,
-            default: false
-        },
-        size: {
-            type: String,
-            default: 'md',
-        },
-        bodyClass: {
-            type: String,
-            default: '',
-        },
-    },
-    methods: {
-        ok() {
-            this.$emit('ok')
-            if (!this.dontCloseOnOk) this.hideModal()
-        },
-        cancel() {
-            this.$emit('cancel')
-            if (!this.dontCloseOnCancel) this.hideModal()
-        },
-        hideModal() {
-            this.$emit('update:modelValue', false)
-        }
-    },
-}
-</script>
 
 <style scoped lang="scss">
 .apm-modal-parent {
