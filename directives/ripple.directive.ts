@@ -25,7 +25,10 @@ function createRipple(event: any) {
 
   // fix: reset the overflow AFTER the ripple is done animating
   const { animationDuration } = getComputedStyle(circle)
-  button.$timeout = setTimeout(() => button.style.overflow = overflow, parseFloat(animationDuration) * 1000)
+  button.$timeout = setTimeout(() => {
+    button.style.overflow = overflow
+    circle.remove()
+  }, parseFloat(animationDuration) * 1000)
 }
 
 export const vRipple = {
