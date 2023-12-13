@@ -1,5 +1,5 @@
-import { UModalProps } from '../../components/UModal.vue'
-import { ConfirmModalProps } from '../../types/misc-types'
+import type { UModalProps } from '../../components/UModal.vue'
+import type { ConfirmModalProps } from '../../types/misc-types'
 import { vRipple } from '../../directives/ripple.directive'
 import { useDynamicComponent } from '../useDynamicComponent'
 import ConfirmModal from './ConfirmModal.vue'
