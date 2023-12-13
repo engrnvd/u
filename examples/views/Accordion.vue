@@ -1,8 +1,8 @@
 <script setup>
 import UAccordion from "../../components/UAccordion.vue"
-import { ref } from "vue"
+import { reactive, ref } from "vue"
 
-const examples = [
+const examples = reactive([
     {
         label: 'Shoe Store',
         desc: `A online store selling shoes`
@@ -26,8 +26,17 @@ industries in Texas and Louisiana`
 7. Careers
 8. Team`
     },
-]
+])
 const selected = ref(examples[1].label)
+const acc = ref()
+
+const standaloneOpen = ref(false)
+const standaloneBody = ref('a\nb\c\n')
+
+async function update() {
+    standaloneBody.value += '\nlorem ipsum'
+    acc.value.updateHeight()
+}
 
 </script>
 
@@ -43,6 +52,18 @@ const selected = ref(examples[1].label)
     <div class="my-5">
         Selected: {{ selected }}
     </div>
+
+    <UAccordion
+        ref="acc"
+        v-model="standaloneOpen"
+        :value="true"
+        label="Standalone Accordion"
+    >
+        <div class="p-4">
+            <pre class="p-4">{{ standaloneBody }}</pre>
+            <a href="#" @click.prevent="update">Add</a>
+        </div>
+    </UAccordion>
 </template>
 
 <style scoped lang="scss">

@@ -25,6 +25,8 @@ function updateHeight() {
 
 watch(() => props.modelValue, updateHeight)
 onMounted(updateHeight)
+
+defineExpose({ updateHeight })
 </script>
 
 <template>
