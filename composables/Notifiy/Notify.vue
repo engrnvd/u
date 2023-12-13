@@ -30,6 +30,9 @@ export default {
     }),
     methods: {
         addItem(type, title, message, options = {}) {
+            // its no fun when the same popup appears more than once
+            if (this.items.find(i => i.options?.type === type && i.title === title && i.message === message)) return
+
             const item = {
                 id: Date.now() + Math.random(),
                 message,
