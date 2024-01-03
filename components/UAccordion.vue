@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ArrowRightIcon from '../icons/ChevronRight.vue'
 import { onMounted, ref, watch } from 'vue'
+import UCard from './UCard.vue'
 
 const props = defineProps<{
     modelValue: any,
@@ -16,11 +17,13 @@ function toggle() {
 }
 
 function updateHeight() {
-    if (props.modelValue === props.value) {
-        bodyEl.value.style.height = `${bodyEl.value.scrollHeight}px`
-    } else {
-        bodyEl.value.style.height = 0
-    }
+    setTimeout(() => {
+        if (props.modelValue === props.value) {
+            bodyEl.value.style.height = `${bodyEl.value.scrollHeight}px`
+        } else {
+            bodyEl.value.style.height = 0
+        }
+    })
 }
 
 watch(() => props.modelValue, updateHeight)
@@ -30,42 +33,18 @@ defineExpose({ updateHeight })
 </script>
 
 <template>
-    <div class="u-accordion card">
-        <div class="header clickable p-3 align-items-center d-flex justify-content-between align-items-center"
-             :class="{'border-b1': modelValue === value}"
+    <UCard class="overflow-hidden my-2">
+        <div class="clickable p-3 items-center flex justify-between cursor-pointer"
+             :class="{'border-b': modelValue === value}"
              @click="toggle">
             <div>
                 <slot name="header">{{ label || value }}</slot>
             </div>
-            <ArrowRightIcon class="icon" :class="{'opened': modelValue === value}"/>
+            <ArrowRightIcon class="transition-transform duration-300" :class="{'rotate-90': modelValue === value}"/>
         </div>
-        <div ref="bodyEl" class="body">
+        <div ref="bodyEl" class="relative transition-[height] duration-300">
             <slot></slot>
         </div>
-    </div>
+    </UCard>
 </template>
 
-<style lang="scss">
-.u-accordion {
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    margin: 0.5em 0;
-
-    .header {
-        .icon {
-            transition: transform 0.25s;
-
-            &.opened {
-                transform: rotate(90deg);
-            }
-        }
-    }
-
-    .body {
-        position: relative;
-        padding: 0;
-        height: 0;
-        transition: height 0.25s;
-    }
-}
-</style>
