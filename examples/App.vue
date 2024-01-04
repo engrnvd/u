@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ThemedContainer from '@/views/ThemedContainer.vue'
+import ThemedContainer from '@/examples/views/ThemedContainer.vue'
 import { capitalize } from '@vue/shared'
 import UCard from '../components/UCard.vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
