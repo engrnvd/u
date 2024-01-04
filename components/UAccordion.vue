@@ -33,7 +33,7 @@ defineExpose({ updateHeight })
 </script>
 
 <template>
-    <UCard class="overflow-hidden my-2 shadow">
+    <UCard class="overflow-hidden my-2 shadow bg-bg text-text">
         <div class="clickable p-3 items-center flex justify-between cursor-pointer"
              :class="{'border-b': modelValue === value}"
              @click="toggle">
@@ -41,6 +41,8 @@ defineExpose({ updateHeight })
                 <slot name="header">{{ label || value }}</slot>
             </div>
             <ArrowRightIcon class="transition-transform duration-300" :class="{'rotate-90': modelValue === value}"/>
+
+            <div class="hover-overlay"></div>
         </div>
         <div ref="bodyEl" class="relative transition-[height] duration-300">
             <slot></slot>

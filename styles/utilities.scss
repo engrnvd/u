@@ -1,0 +1,28 @@
+.all-center {
+    @apply flex items-center justify-center
+}
+
+.has-hover, .clickable {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        .hover-overlay {
+            opacity: 1;
+        }
+    }
+}
+
+.clickable {
+    &:active {
+        .hover-overlay {
+            background-color: var(--active-overlay);
+        }
+    }
+}
+
+.hover-overlay {
+    @apply absolute w-full h-full left-0 top-0 opacity-0 transition;
+
+    background-color: var(--hover-overlay);
+}

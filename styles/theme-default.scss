@@ -1,0 +1,44 @@
+:root {
+    --primary-lighter: rgba(165, 88, 255, 0.1);
+    --primary-light: rgba(161, 65, 240, 0.25);
+    --primary: hsl(271, 91%, 65%);
+    --primary-dark: #7e22ce;
+    --primary-darker: #581c87;
+
+    --neutral-lighter: rgba(133, 144, 155, 0.06);
+    --neutral-light: rgba(133, 144, 155, 0.075);
+    --neutral: rgba(133, 144, 155, 0.1);
+    --neutral-dark: rgba(133, 144, 155, 0.2);
+    --neutral-darker: rgba(133, 144, 155, 0.25);
+
+    --success-lighter: hsla(142, 88%, 50%, 0.15);
+    --success-light: hsla(142, 85%, 38%, 0.4);
+    --success: hsla(142, 85%, 38%, 0.8);
+    --success-dark: hsla(142, 90%, 30%, 0.8);
+    --success-darker: hsla(142, 90%, 25%, 0.8);
+
+    --danger-lighter: hsla(349, 99%, 70%, 0.25);
+    --danger-light: hsla(349, 99%, 60%, 0.35);
+    --danger: hsla(349, 99%, 45%, 0.8);
+    --danger-dark: hsla(349, 99%, 40%, 0.8);
+    --danger-darker: hsla(349, 99%, 35%, 0.8);
+
+    --warn-lighter: hsla(33, 100%, 90%, 0.8);
+    --warn-light: hsla(33, 100%, 80%, 0.8);
+    --warn: hsla(33, 100%, 60%, 0.8);
+    --warn-dark: hsla(33, 100%, 45%, 0.8);
+    --warn-darker: hsla(33, 100%, 38%, 0.8);
+
+    --border-radius: 0.75rem;
+    --border-color: rgba(229, 231, 235, 1);
+    --body-bg: #f2f2f2;
+    --light: #fff;
+    --dark: #333;
+    --bg: var(--light);
+    --text: var(--dark);
+    --muted: rgba(15, 15, 50, 0.5);
+    --semi-muted: rgba(15, 15, 50, 0.7);
+    --ripple: rgba(255, 255, 255, 0.4);
+    --hover-overlay: rgba(0, 0, 0, 0.06);
+    --active-overlay: rgba(0, 0, 0, 0.12);
+}

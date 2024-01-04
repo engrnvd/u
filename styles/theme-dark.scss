@@ -1,0 +1,18 @@
+.theme-dark {
+    --bg: rgb(31, 41, 55);
+    --body-bg: rgb(17, 24, 39);
+    --text: var(--light);
+    --border-color: rgba(220, 222, 226, 0.1);
+    --muted: rgba(240, 240, 255, 0.5);
+    --semi-muted: rgba(240, 240, 255, 0.7);
+    --ripple: rgba(0, 0, 0, 0.2);
+
+    --danger: hsla(349, 99%, 63%, 0.85);
+
+    --neutral-lighter: rgba(133, 144, 155, 0.07);
+    --neutral-light: rgba(133, 144, 155, 0.09);
+    --neutral: rgba(133, 144, 155, 0.2);
+    --neutral-dark: rgba(133, 144, 155, 0.3);
+    --neutral-darker: rgba(133, 144, 155, 0.4);
+}
+

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="bg-bg rounded">
+    <div class="bg-bg text-text rounded">
         <slot></slot>
     </div>
 </template>

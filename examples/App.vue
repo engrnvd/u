@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ThemedContainer from '@/views/ThemedContainer.vue'
 import { capitalize } from '@vue/shared'
 import UCard from '../components/UCard.vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
@@ -15,12 +16,15 @@ const route = useRoute()
                 {{ capitalize(route.replace(/\//, '')) }}
             </RouterLink>
         </UCard>
-        <div class="flex flex-grow p-4 overflow-y-auto overflow-x-hidden">
+        <div class="flex flex-grow overflow-y-auto overflow-x-hidden">
             <main :class="route.name" class="flex-grow flex flex-col">
-                <RouterView/>
+                <ThemedContainer>
+                    <RouterView/>
+                </ThemedContainer>
             </main>
         </div>
     </div>
+
 </template>
 
 <style lang="scss">
