@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-[x-cloak] {
-    display: none;
-}
-
 @layer base {
     :root {
         --primary-lighter: rgba(165, 88, 255, 0.1);
@@ -73,10 +69,6 @@
     --neutral-darker: rgba(133, 144, 155, 0.4);
 }
 
-*, ::before, ::after, [type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
-    border-color: var(--border-color);
-}
-
 .ripple {
     position: absolute;
     border-radius: 50%;
@@ -91,3 +83,5 @@
         opacity: 0;
     }
 }
+
+@import "styles/defaults";

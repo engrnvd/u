@@ -10,7 +10,7 @@ const route = useRoute()
 
 <template>
     <div class="h-screen flex overflow-hidden bg-bg-body">
-        <UCard class="m-4">
+        <UCard class="m-4 shadow">
             <RouterLink class="flex py-3 px-4 has-hover" v-for="route in routes" :to="route" :key="route">
                 {{ capitalize(route.replace(/\//, '')) }}
             </RouterLink>

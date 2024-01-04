@@ -1,4 +1,4 @@
-import '../u.css'
+import '../u.scss'
 import U from '../index'
 import { createApp } from 'vue'
 import App from './App.vue'

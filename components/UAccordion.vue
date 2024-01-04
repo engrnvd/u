@@ -33,7 +33,7 @@ defineExpose({ updateHeight })
 </script>
 
 <template>
-    <UCard class="overflow-hidden my-2">
+    <UCard class="overflow-hidden my-2 shadow">
         <div class="clickable p-3 items-center flex justify-between cursor-pointer"
              :class="{'border-b': modelValue === value}"
              @click="toggle">
