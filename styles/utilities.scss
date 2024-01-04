@@ -3,26 +3,20 @@
 }
 
 .has-hover, .clickable {
-    position: relative;
-    cursor: pointer;
+    @apply cursor-pointer relative;
 
-    &:hover {
-        .hover-overlay {
-            opacity: 1;
-        }
+    &:after {
+        @apply content-[''] bg-[var(--hover-overlay)] absolute w-full h-full left-0 top-0 opacity-0 transition;
+    }
+
+    &:hover:after {
+        @apply opacity-100
     }
 }
 
 .clickable {
-    &:active {
-        .hover-overlay {
-            background-color: var(--active-overlay);
-        }
+    &:active:after {
+        @apply bg-[var(--active-overlay)]
     }
 }
 
-.hover-overlay {
-    @apply absolute w-full h-full left-0 top-0 opacity-0 transition;
-
-    background-color: var(--hover-overlay);
-}

@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    @import "styles/theme-default";
     @import "styles/utilities";
 }
 
-@import "styles/theme-dark";
+@import "styles/theme";
 @import "styles/defaults";
 @import "styles/ripple";

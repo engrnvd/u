@@ -49,7 +49,7 @@ async function update() {
         <pre class="p-4">{{ example.desc }}</pre>
     </UAccordion>
 
-    <div class="my-5">
+    <div class="my-6">
         Selected: {{ selected }}
     </div>
 
@@ -65,7 +65,3 @@ async function update() {
         </div>
     </UAccordion>
 </template>
-
-<style scoped lang="scss">
-
-</style>
