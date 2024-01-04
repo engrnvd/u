@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "framework": "vue",
+  "js-types-syntax": "typescript",
+  "description-markup": "markdown",
+  "framework-config": {
+    "enable-when": {
+      "file-extensions": [
+        "vue"
+      ]
+    }
+  },
+  "contributions": {
+    "html": {
+      "vue-directives": [
+        {
+          "name": "ripple",
+          "description": "Directive to create ripple. Default ripple will be white. Add class ripple-dark to add a darker ripple",
+          "doc-url": "",
+          "attribute-value": {
+            "type": "boolean",
+            "required": false
+          }
+        }
+      ]
+    }
+  }
+}
