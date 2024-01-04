@@ -39,8 +39,8 @@
     --muted: rgba(15, 15, 50, 0.5);
     --semi-muted: rgba(15, 15, 50, 0.7);
     --ripple: rgba(255, 255, 255, 0.4);
-    --hover-overlay: rgba(0, 0, 0, 0.025);
-    --active-overlay: rgba(0, 0, 0, 0.05);
+    --hover-overlay: rgba(0, 0, 0, 0.05);
+    --active-overlay: rgba(0, 0, 0, 0.08);
 }
 
 .theme-dark {
@@ -50,7 +50,6 @@
     --border-color: rgba(220, 222, 226, 0.07);
     --muted: rgba(240, 240, 255, 0.5);
     --semi-muted: rgba(240, 240, 255, 0.7);
-    --ripple: rgba(0, 0, 0, 0.2);
 
     --danger: hsla(349, 99%, 63%, 0.85);
 
@@ -59,4 +58,8 @@
     --neutral: rgba(133, 144, 155, 0.2);
     --neutral-dark: rgba(133, 144, 155, 0.3);
     --neutral-darker: rgba(133, 144, 155, 0.4);
+}
+
+.theme-dark, .ripple-dark {
+    --ripple: rgba(0, 0, 0, 0.2);
 }

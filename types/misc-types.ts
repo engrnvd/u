@@ -5,4 +5,4 @@ export interface ConfirmModalProps {
   onClose?: Function,
 }
 
-export type ColorVariant = 'primary' | 'danger' | 'neutral' | 'warning' | 'success'
+export type ColorVariant = 'primary' | 'danger' | 'neutral' | 'warn' | 'success'

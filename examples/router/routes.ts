@@ -5,6 +5,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      redirect: '/accordion'
+    },
+    {
       path: '/accordion',
       component: () => import('../views/Accordion.vue')
     },
@@ -31,10 +35,6 @@ const router = createRouter({
     {
       path: '/chips',
       component: () => import('../views/ChipsView.vue')
-    },
-    {
-      path: '/',
-      redirect: '/accordion'
     },
   ]
 })

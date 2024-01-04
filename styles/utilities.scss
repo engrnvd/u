@@ -6,7 +6,7 @@
     @apply cursor-pointer relative;
 
     &:after {
-        @apply content-[''] bg-[var(--hover-overlay)] absolute w-full h-full left-0 top-0 opacity-0 transition;
+        @apply content-[''] bg-[var(--hover-overlay)] absolute rounded-[inherit] w-full h-full left-0 top-0 opacity-0 transition;
     }
 
     &:hover:after {

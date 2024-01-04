@@ -1,6 +1,6 @@
 import '../u.scss'
-import U from '../index'
 import { createApp } from 'vue'
+import U from '../index'
 import App from './App.vue'
 import router from './router/routes'
 

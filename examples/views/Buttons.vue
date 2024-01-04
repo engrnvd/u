@@ -1,17 +1,12 @@
 <script lang="ts" setup>
+import { store } from '@/examples/store/store'
 import { reactive } from 'vue'
-import AccountIcon from '../../icons/Account.vue'
 import UButton from '../../components/UButton.vue'
+import AccountIcon from '../../icons/Account.vue'
 
-const variants = reactive([
-    'primary',
-    'secondary',
-    'success',
-    'warning',
-    'danger',
-])
-const types = ['button', 'icon']
-const alts = reactive(['solid', 'transparent', 'flat', 'outline', 'compact'])
+const variants = store.colors
+const types = ['', 'icon']
+const alts = reactive(['solid', 'transparent', 'outline'])
 
 </script>
 
@@ -20,9 +15,13 @@ const alts = reactive(['solid', 'transparent', 'flat', 'outline', 'compact'])
         <div v-for="type in types">
             <div v-for="alt in alts" class="mb-5 pb-4">
                 <h2>{{ type }} {{ alt }}</h2>
-                <div class="d-flex gap-4">
+                <div class="flex gap-4 w-fit">
                     <div v-for="color in variants">
-                        <UButton :[color]="true" :[alt]="true" :[type]="true" v-tooltip="color">
+                        <UButton
+                            :class="{[`border border-${color}`]: alt === 'outline'}"
+                            :color="color"
+                            :icon="type === 'icon'"
+                            :transparent="alt !== 'solid'">
                             <AccountIcon v-if="type === 'icon'"/>
                             <span v-else>{{ color }}</span>
                         </UButton>
@@ -32,7 +31,7 @@ const alts = reactive(['solid', 'transparent', 'flat', 'outline', 'compact'])
         </div>
         <div>
             <h2>loading</h2>
-            <div class="d-flex gap-4">
+            <div class="flex gap-4">
                 <div v-for="color in variants">
                     <UButton :[color]="true" loading>
                         {{ color }}
@@ -42,6 +41,3 @@ const alts = reactive(['solid', 'transparent', 'flat', 'outline', 'compact'])
         </div>
     </div>
 </template>
-
-<style scoped lang="scss">
-</style>
