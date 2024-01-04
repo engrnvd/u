@@ -32,6 +32,10 @@ const router = createRouter({
       path: '/chips',
       component: () => import('../views/ChipsView.vue')
     },
+    {
+      path: '/',
+      redirect: '/accordion'
+    },
   ]
 })
 
