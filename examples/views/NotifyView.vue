@@ -1,50 +1,29 @@
 <script lang="ts" setup>
-
+import { useNotify } from '@/composables/Notifiy'
+import { store } from '@/examples/store/store'
 import UButton from '../../components/UButton.vue'
-import { useNotify } from '../../composables/Notifiy/index'
 
 const notify = useNotify()
-
 </script>
 
 <template>
-    <div class="d-flex flex-column gap-4" style="max-width: 300px">
+    <div class="flex flex-col gap-4 max-w-xs">
         <UButton
-            @click="notify.showMessage('primary', 'This is the title', 'This the message of this particular notification')">
-            primary
+            v-for="color in store.colors"
+            :color="color"
+            @click="notify.showMessage(color, 'I will go away', 'This the message of this certain notification')">
+            {{ color }}
         </UButton>
-        <UButton success
-                 @click="notify.success('This is the title', 'This the message of this particular notification')">
-            Success
+
+        <UButton
+            color="neutral"
+            @click="notify.success('I will be here 4ever', 'Click to close.', {permanent: true})">
+            permanent
         </UButton>
-        <UButton danger @click="notify.error('This is the title', 'This the message of this particular notification')">
-            Error
-        </UButton>
-        <UButton info @click="notify.info('This is the title', 'This the message of this particular notification')">
-            info
-        </UButton>
-        <UButton success
-                 @click="notify.success('Forever', 'Unless you click me', {permanent: true})">
-            Permanent
-        </UButton>
-        <UButton danger
-                 @click="notify.error('Forever', 'Unless you click me', {permanent: true})">
-            Permanent
-        </UButton>
-        <UButton info
-                 @click="notify.info('Forever', 'Unless you click me', {permanent: true})">
-            Permanent
-        </UButton>
-        <UButton primary
-                 @click="notify.showMessage('primary', 'Forever', 'Unless you click me', {permanent: true})">
-            Permanent
-        </UButton>
-        <UButton secondary
-                 @click="notify.success('Quick!', 'Ima go...', {duration: 500})">
+
+        <UButton color="neutral" @click="notify.success('Quick!', 'Ima go...', {duration: 800})">
             Custom Duration
         </UButton>
     </div>
 </template>
 
-<style scoped lang="scss">
-</style>

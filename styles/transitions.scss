@@ -52,3 +52,19 @@
 .list-leave-active {
     position: absolute;
 }
+
+/* list-slide */
+.list-slide-move, /* apply transition to moving elements */
+.list-slide-enter-active,
+.list-slide-leave-active {
+    transition: all 0.4s;
+}
+
+.list-slide-enter-from, .list-slide-leave-to {
+    opacity: 0;
+    transform: translate(100%, 0);
+}
+
+.list-slide-leave-active {
+    position: absolute;
+}

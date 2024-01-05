@@ -1,3 +1,4 @@
+import type { ColorVariant } from '@/types/misc-types'
 import { useDynamicComponent } from '../useDynamicComponent'
 import Notify from './Notify.vue'
 
@@ -9,7 +10,7 @@ export interface NotifyOptions {
 }
 
 export function useNotify() {
-  function showMessage(type = 'success', title: string, message: string, options: NotifyOptions = {}) {
+  function showMessage(type: ColorVariant = 'success', title: string, message: string, options: NotifyOptions = {}) {
     // @ts-ignore
     component.addItem(type, title, message, options)
   }
@@ -23,11 +24,7 @@ export function useNotify() {
   }
 
   function warning(title: string, message: string, options: NotifyOptions = {}) {
-    showMessage('warning', title, message, options)
-  }
-
-  function info(title: string, message: string, options: NotifyOptions = {}) {
-    showMessage('info', title, message, options)
+    showMessage('warn', title, message, options)
   }
 
   return {
@@ -35,7 +32,6 @@ export function useNotify() {
     success,
     error,
     warning,
-    info,
   }
 }
 
