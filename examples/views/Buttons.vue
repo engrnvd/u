@@ -14,7 +14,7 @@ const alts = reactive(['solid', 'transparent', 'outline'])
     <div>
         <div v-for="type in types">
             <div v-for="alt in alts" class="mb-5 pb-4">
-                <h2>{{ type }} {{ alt }}</h2>
+                <h2 class="capitalize">{{ type }} {{ alt }}</h2>
                 <div class="flex gap-4 w-fit">
                     <div v-for="color in variants">
                         <UButton
@@ -30,7 +30,7 @@ const alts = reactive(['solid', 'transparent', 'outline'])
             </div>
         </div>
         <div class="mb-5">
-            <h2>disabled</h2>
+            <h2 class="capitalize">disabled</h2>
             <div class="flex gap-4">
                 <div v-for="color in variants">
                     <UButton :[color]="true" disabled>
@@ -40,7 +40,7 @@ const alts = reactive(['solid', 'transparent', 'outline'])
             </div>
         </div>
         <div>
-            <h2>loading</h2>
+            <h2 class="capitalize">loading</h2>
             <div class="flex gap-4">
                 <div v-for="color in variants">
                     <UButton :[color]="true" loading>

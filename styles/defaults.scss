@@ -9,3 +9,33 @@
 a {
     color: var(--primary);
 }
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.6em;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+h1 {
+    font-size: 1.6em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+p {
+    margin-block: 1.15em;
+}

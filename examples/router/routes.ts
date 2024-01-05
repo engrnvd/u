@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/accordion'
+      component: () => import('../views/Typography.vue')
     },
     {
       path: '/accordion',

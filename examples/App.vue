@@ -11,7 +11,7 @@ const route = useRoute()
 
 <template>
     <div class="h-screen flex overflow-hidden bg-bg-body">
-        <UCard class="m-4 shadow overflow-hidden">
+        <UCard class="m-4 shadow overflow-hidden shrink-0">
             <RouterLink v-for="route in routes" :key="route" :to="route" class="flex py-3 px-4 has-hover">
                 {{ capitalize(route.replace(/\//, '')) || 'Home' }}
             </RouterLink>
