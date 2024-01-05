@@ -89,7 +89,8 @@ module.exports = {
     plugins: [forms, typography],
     safelist: [
         {
-            pattern: /.*:?(border|bg|text)-(primary|neutral|warn|danger|success).*/,
+            pattern: /(border|bg|text)-(primary|neutral|warn|danger|success).*/,
+            variants: ['hover']
         },
     ],
 }

@@ -29,6 +29,16 @@ const alts = reactive(['solid', 'transparent', 'outline'])
                 </div>
             </div>
         </div>
+        <div class="mb-5">
+            <h2>disabled</h2>
+            <div class="flex gap-4">
+                <div v-for="color in variants">
+                    <UButton :[color]="true" disabled>
+                        {{ color }}
+                    </UButton>
+                </div>
+            </div>
+        </div>
         <div>
             <h2>loading</h2>
             <div class="flex gap-4">

@@ -19,19 +19,18 @@ const p = withDefaults(defineProps<{
 })
 
 const textClass = computed(() => {
-    if (p.color === 'neutral' || p.color === 'warn') return 'text-text'
+    if (p.color === 'neutral' || p.color === 'warn' || p.loading) return 'text-text'
     if (p.transparent) return `text-${p.color}`
     return 'text-light'
 })
 
 const classes = computed(() => ({
     [textClass.value]: true,
-    [`bg-${p.color}`]: !p.transparent,
-    [`hover:bg-${p.color} text-${p.color}`]: p.transparent,
+    [`bg-${p.color} hover:bg-${p.color}-dark`]: !p.transparent,
+    [`hover:bg-${p.color}-lighter text-${p.color}`]: p.transparent,
     'ripple-dark': p.color === 'neutral' || p.transparent,
     'rounded-md px-4 py-2': !p.icon,
     'size-[2em] rounded-full justify-center': p.icon,
-    [`hover:bg-${p.color}-light hover:text-light`]: p.icon && p.color !== 'neutral',
 }))
 
 </script>
@@ -41,8 +40,10 @@ const classes = computed(() => ({
         v-ripple
         :class="classes"
         :disabled="loading || disabled"
-        class="inline-flex has-hover items-center text-sm font-semibold uppercase tracking-widest transition duration-150 ease-in-out focus:outline-none active:shadow-none disabled:cursor-not-allowed disabled:bg-neutral-darker disabled:shadow-none">
-        <slot v-if="!loading"/>
-        <LoadingIcon v-else class="animate-spin"/>
+        class="inline-flex items-center text-sm font-semibold uppercase tracking-widest transition duration-150 ease-in-out focus:outline-none active:shadow-none disabled:cursor-not-allowed disabled:bg-neutral-darker disabled:shadow-none relative">
+        <span :class="{'opacity-0': loading}"><slot/></span>
+        <span v-if="loading" class="absolute inset-0 all-center">
+            <LoadingIcon class="animate-spin absolute"/>
+        </span>
     </button>
 </template>
