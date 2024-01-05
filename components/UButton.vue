@@ -26,7 +26,7 @@ const classes = computed(() => ({
     [`bg-${p.color} hover:bg-${p.color}-dark`]: !p.transparent,
     [`hover:bg-${p.color}-lighter text-${p.color}`]: p.transparent,
     'ripple-dark': p.color === 'neutral' || p.transparent,
-    'rounded-md px-4 py-2': !p.icon,
+    'rounded-md px-4 py-2 min-w-20': !p.icon,
     'size-[2em] rounded-full justify-center': p.icon,
 }))
 
