@@ -49,11 +49,10 @@ const v = useValidator(form, v => {
 
 <template>
     <div class="flex gap-4">
-        <form class="flex flex-col w-1/2 min-w-80" @submit.prevent="v.validate()">
+        <form autocomplete="off" class="flex flex-col w-1/2 min-w-80 space-y-4" @submit.prevent="v.validate()">
             <UFormElement
                 v-model="form.email"
                 :errors="v.errors.email"
-                class="mb-4"
                 label="Email"
                 placeholder="you@company.com"
                 type="email"
@@ -61,7 +60,6 @@ const v = useValidator(form, v => {
             <UFormElement
                 v-model="form.password"
                 :errors="v.errors.password"
-                class="mb-4"
                 help-text="Minimum 5 characters"
                 label="Password"
                 type="password"
@@ -71,7 +69,6 @@ const v = useValidator(form, v => {
                 v-model="form.fruit"
                 :errors="v.errors.fruit"
                 :options="fruits"
-                class="mb-4"
                 label="Fruit"
             />
 
@@ -83,7 +80,7 @@ const v = useValidator(form, v => {
                 label="Options as objects"
             />
 
-            <UFileUpload :files="form.files" accept="image/*"/>
+            <UFileUpload :files="form.files" accept="image/*" max="2"/>
 
             <UCheckbox
                 v-model="form.agreement"
@@ -94,15 +91,13 @@ const v = useValidator(form, v => {
             <USwitch
                 v-model="form.lights"
                 :errors="v.errors.lights"
-                class="mb-4"
                 label="Lights"
             />
 
-            <UColorPicker v-model="form.color" class="mb-4"/>
+            <UColorPicker v-model="form.color"/>
 
             <UColorPicker
                 v-model="form.color"
-                class="mb-4"
                 variant="classic">
                 <a href="#">
                     <FormatColorFill/>
@@ -112,7 +107,6 @@ const v = useValidator(form, v => {
 
             <UColorPicker
                 v-model="form.color"
-                class="mb-4"
                 variant="classic">
                 <div href="#">
                     <FormatColorText/>
@@ -123,13 +117,11 @@ const v = useValidator(form, v => {
             <UChoices
                 v-model="form.fruits"
                 :choices="fruits"
-                class="mb-4"
                 label="Favorite Fruits"
             />
 
             <UTextarea
                 v-model="form.about"
-                class="mb-4"
                 label="About"
             />
 

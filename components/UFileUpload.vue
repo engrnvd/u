@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-import PaperclipIcon from '../icons/Paperclip.vue'
+import UInputHelpText from '@/components/UInputHelpText.vue'
+import AlertIcon from '@/icons/Alert.vue'
+import TrayArrowUpIcon from '@/icons/TrayArrowUp.vue'
+import { computed, ref } from 'vue'
 import PlusIcon from '../icons/Plus.vue'
-import { ref } from 'vue'
 import accepted from '../utils/accepted-file-type'
 import UFileTile from './UFileTile.vue'
 
@@ -65,6 +67,7 @@ function blockOnTiles(e) {
     }
 
     inputElement.value.click()
+    inputElement.value.focus()
 }
 
 function onDragEnter() {
@@ -77,139 +80,73 @@ function onDragLeave() {
 }
 
 const emit = defineEmits(['change'])
+
+let canAddFiles = computed(() => !props.disabled && props.files.length < props.max)
 </script>
 
 <template>
-    <div class="file-dropzone"
-         :class="{'has-content': files && files.length, 'wrong-type': wrongType, disabled: disabled || files.length>= max}"
-         @click="blockOnTiles"
+    <div
+        :class="{'!text-danger !border-danger': wrongType, 'cursor-not-allowed': !canAddFiles}"
+        class="relative overflow-hidden rounded-md border-2 p-4 group text-muted focus-within:border-primary"
+        @click="blockOnTiles"
     >
         <input
-            v-show="false"
-            type="file"
-            multiple
-            @change="acceptUpload"
             ref="inputElement"
             :accept="accept"
-            :disabled="disabled || files.length>= max"
+            :disabled="!canAddFiles"
+            class="absolute h-0 w-0"
+            multiple
+            type="file"
             v-bind="{...$attrs}"
+            @change="acceptUpload"
         />
-        <div class="empty-layer d-flex align-items-center gap-2" ref="emptyLayer">
-            <slot name="empty-layer" :wrongType="wrongType" :dragActive="dragActive">
-                <PaperclipIcon/>
-                <div class="flex-grow-1">
-                    <i v-if="disabled">file upload unavailable</i>
-                    <i v-else-if="wrongType">incorrect file type</i>
-                    <i v-else-if="dragActive">release to upload</i>
-                    <i v-else>drag &amp; drop here or click to upload files</i>
+        <div v-if="!files?.length" ref="emptyLayer" class="z-10 flex flex-col items-center gap-2">
+            <slot :dragActive="dragActive" :wrongType="wrongType" name="empty-layer">
+                <TrayArrowUpIcon class="text-2xl"/>
+                <div class="flex-grow font-bold text-center">
+                    <div v-if="disabled">File upload unavailable</div>
+                    <div v-else-if="wrongType">Incorrect file type</div>
+                    <div v-else>
+                        <div class="text-semi-muted">Drag and drop files{{ max > 1 ? 's' : '' }} here</div>
+                        <div class="font-normal text-sm">
+                            or choose file{{ max > 1 ? 's' : '' }} from device
+                        </div>
+                    </div>
                 </div>
             </slot>
         </div>
         <div
-            class="dropzone-layer"
+            v-if="canAddFiles"
             ref="dropzoneLayer"
+            v-ripple
             :class="{accepting: dragActive}"
-            @dragover.prevent.stop="checkTypesEarly"
+            class="absolute inset-0 z-20 cursor-pointer p-4 has-hover ripple-dark"
             @dragenter="onDragEnter"
             @dragleave="onDragLeave"
+            @dragover.prevent.stop="checkTypesEarly"
             @drop.prevent.stop="acceptUpload"
         >
-            <div v-if="files.length && files.length < max" class="more-icon">
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <div class="z-30 flex-grow">
+                <UFileTile
+                    v-for="file in files"
+                    :file="file"
+                    class="z-30 my-2"
+                    @delete="deleteFile"
+                />
+                <UInputHelpText v-if="files.length >= max" class="flex items-center space-x-1">
+                    <AlertIcon class="text-warn"/>
+                    <div>Max {{ max }} files allowed</div>
+                </UInputHelpText>
+            </div>
+            <div v-if="files.length && files.length < max" class="text-2xl">
                 <slot name="more-icon">
                     <PlusIcon class="plus"/>
                 </slot>
             </div>
         </div>
-        <UFileTile
-            v-for="file in files"
-            :file="file"
-            @delete="deleteFile"
-        />
     </div>
 </template>
 
-<style lang="scss" scoped>
-
-.file-dropzone {
-    color: var(--muted);
-    border: var(--u-input-border-width) solid var(--u-input-border-color);
-    border-radius: var(--form-element-border-radius);
-    display: block;
-    margin: 2em 0 0.5em;
-    position: relative;
-    overflow: hidden;
-
-    &:focus-within {
-        border-color: var(--primary);
-    }
-
-    &.disabled {
-        color: var(--disabled-text-color);
-    }
-
-    .empty-layer {
-        z-index: 1;
-        padding: 1.5em var(--u-input-padding);
-    }
-
-    .dropzone-layer {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        height: 100%;
-        justify-content: flex-end;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 2;
-
-        &:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        &.accepting {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .more-icon {
-            font-size: 2em;
-            padding-right: 0.5rem;
-        }
-    }
-
-    input:focus ~ .dropzone-layer {
-        background: rgba(0, 0, 0, 0.05);
-    }
-
-    &.disabled .dropzone-layer {
-        background: none;
-        cursor: not-allowed;
-    }
-
-    &.has-content {
-        display: grid;
-        gap: 0.5em;
-        grid-template-columns: repeat(auto-fill, 12em);
-        padding: 1em;
-
-        .empty-layer {
-            display: none;
-        }
-    }
-
-    &.wrong-type {
-        color: var(--danger);
-
-        .dropzone-layer {
-            &:hover {
-                background: var(--danger-lighter);
-            }
-
-            &.accepting {
-                background: var(--danger-lighter);
-            }
-        }
-    }
-}
-</style>
