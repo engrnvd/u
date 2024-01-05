@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import UInputError from '@/components/UInputError.vue'
-import UInputHelpText from '@/components/UInputHelpText.vue'
+import UFormElement from '@/components/UFormElement.vue'
 import UInputLabel from '@/components/UInputLabel.vue'
+import { inputEmits, inputProps } from '@/helpers/input-helper'
 import CheckboxMarkedOutlineIcon from '@/icons/CheckboxMarkedOutline.vue'
 import { defineProps } from 'vue'
-import { inputEmits, inputProps } from '../helpers/input-helper'
 import CheckboxBlankOutlineIcon from '../icons/CheckboxBlankOutline.vue'
 import UButton from './UButton.vue'
 
@@ -21,7 +20,7 @@ function onClick(e) {
 </script>
 
 <template>
-    <div>
+    <UFormElement :errors="errors" :help-text="helpText">
         <div class="flex items-center relative group space-x-2" @click.prevent="onClick">
             <UButton
                 :color="modelValue ? 'primary' : 'neutral'"
@@ -34,7 +33,5 @@ function onClick(e) {
             </UButton>
             <UInputLabel v-if="label" class="select-none" color="text">{{ label }}</UInputLabel>
         </div>
-        <UInputError v-for="error in errors">{{ error }}</UInputError>
-        <UInputHelpText v-if="helpText && !errors.length">{{ helpText }}</UInputHelpText>
-    </div>
+    </UFormElement>
 </template>

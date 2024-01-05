@@ -41,6 +41,7 @@ const v = useValidator(form, v => {
     v.addRule(minLengthRule('password', 5))
     v.addRule(requiredRule('re_password'))
     v.addRule(requiredRule('agreement'))
+    v.addRule(requiredRule('lights'))
     v.addRule(requiredRule('fruit'))
     v.addCustomRule('re_password', 'Passwords must match', () => form.password === form.re_password)
 })
