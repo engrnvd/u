@@ -13,7 +13,7 @@ async function confirm1() {
 }
 
 async function confirm2() {
-    const yes = await useConfirm('Free Samosay', 'Would you like some free Samosay?', {
+    const yes = await useConfirm('Free Samosay', 'Would you like some free Samosay? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci autem, blanditiis culpa cum cupiditate dolorem earum hic illum incidunt magnam numquam placeat possimus, praesentium quasi quod rem sed. Impedit, possimus.', {
         okTitle: 'Absolutely',
         cancelTitle: 'Not at the moment'
     })
@@ -24,11 +24,8 @@ async function confirm2() {
 </script>
 
 <template>
-    <div class="d-flex flex-column gap-4" style="max-width: 300px">
+    <div class="flex flex-col gap-4 max-w-xs">
         <UButton @click="confirm1">Delete Everything</UButton>
         <UButton @click="confirm2">Free Samosay</UButton>
     </div>
 </template>
-
-<style scoped lang="scss">
-</style>

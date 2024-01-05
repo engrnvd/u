@@ -53,6 +53,7 @@ module.exports = {
                 'bg-body': 'var(--body-bg)',
                 muted: 'var(--muted)',
                 'semi-muted': 'var(--semi-muted)',
+                overlay: 'var(--overlay)'
             },
             boxShadow: {
                 DEFAULT: '0 2px 2px 0 rgb(0 0 0 / 0.2), 0 1px 5px 0 rgb(0 0 0 / 0.1)'

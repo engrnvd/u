@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import CloseIcon from '../icons/Close.vue'
 import UButton from './UButton.vue'
 
@@ -47,98 +47,51 @@ function hideModal() {
     emit('update:modelValue', false)
 }
 
+let sizes = {
+    'sm': 'w-[28rem]',
+    'md': 'w-[32rem]',
+    'lg': 'w-[56rem]',
+    'xl': 'w-[72rem]',
+}
+
 </script>
 
 <template>
     <transition name="fade">
-        <div class="apm-modal-parent all-center" v-show="modelValue">
+        <div v-show="modelValue" class="all-center w-screen h-screen fixed left-0 top-0 z-50">
             <transition name="slide-down">
-                <div v-if="modelValue" class="apm-modal shadow" :class="`modal-${size}`">
-                    <div class="apm-modal-header">
+                <div v-if="modelValue" :class="sizes[size]"
+                     class="shadow bg-bg max-w-[96vw] max-h-[96vh] relative rounded overflow-hidden flex flex-col"
+                     v-bind="$attrs">
+                    <div class="p-6">
                         <slot name="header">
                             <h2 class="m-0">{{ title }}</h2>
                         </slot>
                     </div>
-                    <div class="apm-modal-body" :class="bodyClass">
+                    <div :class="bodyClass" class="p-6 overflow-auto flex-grow">
                         <slot></slot>
                     </div>
-                    <div v-if="!noFooter" class="apm-modal-footer d-flex gap-4">
+                    <div v-if="!noFooter" class="flex p-6 gap-4">
                         <slot name="footer">
-                            <UButton @click="ok" v-if="!cancelOnly || okOnly" :loading="okLoading"
-                                     :disabled="okDisabled">
+                            <UButton
+                                v-if="!cancelOnly || okOnly"
+                                :disabled="okDisabled"
+                                :loading="okLoading"
+                                @click="ok">
                                 {{ okTitle }}
                             </UButton>
-                            <UButton secondary v-if="!okOnly || cancelOnly" @click="cancel">{{ cancelTitle }}</UButton>
+                            <UButton v-if="!okOnly || cancelOnly" color="neutral" @click="cancel">
+                                {{ cancelTitle }}
+                            </UButton>
                         </slot>
                     </div>
-                    <a href="" class="close-modal-btn text-muted" @click.prevent="cancel">
+                    <a class="absolute right-4 top-4 text-muted text-lg" href="" @click.prevent="cancel">
                         <CloseIcon/>
                     </a>
                 </div>
             </transition>
-            <div class="modal-backdrop" @click="cancel"></div>
+            <div class="absolute inset-0 z-[-1] bg-overlay" @click="cancel"></div>
         </div>
     </transition>
 </template>
 
-<style scoped lang="scss">
-.apm-modal-parent {
-    min-width: 100vw;
-    min-height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 99;
-}
-
-.modal-backdrop {
-    min-width: 100%;
-    min-height: 100%;
-    background-color: rgba(33, 33, 33, 0.85);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-}
-
-.apm-modal {
-    background-color: var(--bg);
-    width: 32rem;
-    max-width: 96vw;
-    border-radius: var(--border-radius);
-    position: relative;
-
-    &.modal-sm {
-        width: 28rem;
-    }
-
-    &.modal-lg {
-        width: 56rem;
-    }
-
-    &.modal-xlg {
-        width: 72rem;
-    }
-
-    .close-modal-btn {
-        position: absolute;
-        right: 1em;
-        top: 1em;
-        font-size: 1.25em;
-    }
-
-    .apm-modal-footer {
-        padding: 0 3em 3em;
-    }
-}
-
-.apm-modal-header {
-    padding: 3em 3em 0;
-}
-
-.apm-modal-body {
-    padding: 3em;
-    max-height: calc(100vh - 14em);
-    overflow: auto;
-}
-</style>

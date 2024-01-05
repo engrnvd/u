@@ -37,6 +37,10 @@ const router = createRouter({
       component: () => import('../views/ChipsView.vue')
     },
     {
+      path: '/modals',
+      component: () => import('../views/ModalsPage.vue')
+    },
+    {
       path: '/transitions',
       component: () => import('../views/TransitionsPage.vue')
     },
