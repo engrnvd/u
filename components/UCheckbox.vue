@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import CheckboxBlankOutlineIcon from '../icons/CheckboxBlankOutline.vue'
-import CheckboxMarkedIcon from '../icons/CheckboxMarked.vue'
-import UButton from './UButton.vue'
-import UInput from './UInput.vue'
+import UInputError from '@/components/UInputError.vue'
+import UInputHelpText from '@/components/UInputHelpText.vue'
+import UInputLabel from '@/components/UInputLabel.vue'
+import CheckboxMarkedOutlineIcon from '@/icons/CheckboxMarkedOutline.vue'
+import { defineProps } from 'vue'
 import { inputEmits, inputProps } from '../helpers/input-helper'
-import { computed, defineProps } from 'vue'
+import CheckboxBlankOutlineIcon from '../icons/CheckboxBlankOutline.vue'
+import UButton from './UButton.vue'
 
 const props = defineProps({
     ...inputProps
@@ -12,42 +14,27 @@ const props = defineProps({
 
 const emit = defineEmits([...inputEmits])
 
-const _value = computed({
-    get: () => props.modelValue,
-    set: v => emit('update:modelValue', v)
-})
+function onClick(e) {
+    emit('update:modelValue', !props.modelValue)
+}
 
 </script>
 
 <template>
-    <UInput v-bind="$props" class="u-checkbox">
-        <UButton
-            transparent icon secondary
-            @click.prevent="_value = !_value">
-            <div class="icon d-flex align-items-center">
-                <CheckboxMarkedIcon v-if="_value"/>
-                <CheckboxBlankOutlineIcon v-else/>
-            </div>
-        </UButton>
-        {{ label }}
-    </UInput>
+    <div>
+        <div class="flex items-center relative group space-x-2" @click.prevent="onClick">
+            <UButton
+                :color="modelValue ? 'primary' : 'neutral'"
+                class="group-focus-within:border-primary group-focus-within:border"
+                icon transparent>
+                <div class="flex items-center text-xl">
+                    <CheckboxMarkedOutlineIcon v-if="modelValue"/>
+                    <CheckboxBlankOutlineIcon v-else/>
+                </div>
+            </UButton>
+            <UInputLabel v-if="label" class="select-none" color="text">{{ label }}</UInputLabel>
+        </div>
+        <UInputError v-for="error in errors">{{ error }}</UInputError>
+        <UInputHelpText v-if="helpText && !errors.length">{{ helpText }}</UInputHelpText>
+    </div>
 </template>
-
-<style lang="scss">
-
-.u-checkbox {
-    .u-form-group {
-        display: flex;
-        align-items: center;
-        gap: 0.25em;
-    }
-
-    .u-btn {
-        .icon {
-            color: var(--u-input-color);
-            font-size: 1.125em;
-        }
-    }
-}
-
-</style>

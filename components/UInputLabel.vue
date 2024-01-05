@@ -9,7 +9,7 @@ const p = withDefaults(defineProps<{
 </script>
 
 <template>
-    <label :class="`block text-${color} text-sm mb-1`">
+    <label :class="`block text-${color} text-sm`">
         <slot></slot>
     </label>
 </template>

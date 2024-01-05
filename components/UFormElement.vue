@@ -16,7 +16,7 @@ const emit = defineEmits([...inputEmits])
 
 <template>
     <div>
-        <UInputLabel v-if="label">{{ label }}</UInputLabel>
+        <UInputLabel v-if="label" class="mb-1">{{ label }}</UInputLabel>
         <slot>
             <UInput
                 :class="{'!border-danger': errors.length}"

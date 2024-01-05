@@ -80,7 +80,7 @@ const v = useValidator(form, v => {
                 label="Options as objects"
             />
 
-            <UFileUpload :files="form.files" accept="image/*" max="2"/>
+            <UFileUpload :files="form.files" :max="2" accept="image/*"/>
 
             <UCheckbox
                 v-model="form.agreement"
