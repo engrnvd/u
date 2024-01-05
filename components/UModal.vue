@@ -68,7 +68,7 @@ let sizes = {
                             <h2 class="m-0">{{ title }}</h2>
                         </slot>
                     </div>
-                    <div :class="bodyClass" class="p-6 overflow-auto flex-grow">
+                    <div :class="bodyClass" class="px-6 py-2 overflow-auto flex-grow">
                         <slot></slot>
                     </div>
                     <div v-if="!noFooter" class="flex p-6 gap-4">
