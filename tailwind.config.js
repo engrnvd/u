@@ -1,6 +1,3 @@
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
@@ -86,11 +83,10 @@ module.exports = {
         },
     },
 
-    plugins: [forms, typography],
     safelist: [
         {
             pattern: /(border|bg|text)-(primary|neutral|warn|danger|success).*/,
-            variants: ['hover']
+            variants: ['hover', 'focus']
         },
     ],
 }

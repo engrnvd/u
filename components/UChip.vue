@@ -18,8 +18,8 @@ const props = withDefaults(defineProps<{
 </template>
 
 <style lang="scss">
-@import "../styles/variables";
-@import "../styles/functions";
+//@import "../styles/variables";
+//@import "../styles/functions";
 
 .u-chip {
     width: fit-content;
@@ -34,15 +34,15 @@ const props = withDefaults(defineProps<{
         background-color: var(--gray-hover);
     }
 
-    @each $color, $value in $theme-colors {
-        &.#{$color} {
-            background-color: var(--#{$color});
-            color: contrastColor($value);
-
-            &:hover {
-                background-color: var(--#{$color}-dark);
-            }
-        }
-    }
+    //@each $color, $value in $theme-colors {
+    //    &.#{$color} {
+    //        background-color: var(--#{$color});
+    //        color: contrastColor($value);
+    //
+    //        &:hover {
+    //            background-color: var(--#{$color}-dark);
+    //        }
+    //    }
+    //}
 }
 </style>
