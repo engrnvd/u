@@ -6,8 +6,8 @@ const themes = ['light', 'dark']
 
 <template>
     <div class="grid grid-cols-2 gap-0 min-h-screen">
-        <div v-for="theme in themes" :class="`theme-${theme}`" class="p-12 bg-bg-body space-y-3">
-            <UCard class="p-4">
+        <div v-for="theme in themes" :class="`theme-${theme}`" class="p-12 bg-bg-body space-y-3 h-full">
+            <UCard class="p-4 h-full">
                 <slot></slot>
             </UCard>
         </div>

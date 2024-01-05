@@ -36,6 +36,10 @@ const router = createRouter({
       path: '/chips',
       component: () => import('../views/ChipsView.vue')
     },
+    {
+      path: '/transitions',
+      component: () => import('../views/TransitionsPage.vue')
+    },
   ]
 })
 
