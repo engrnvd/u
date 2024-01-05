@@ -43,6 +43,8 @@ const v = useValidator(form, v => {
     v.addRule(requiredRule('agreement'))
     v.addRule(requiredRule('lights'))
     v.addRule(requiredRule('fruit'))
+    v.addRule(requiredRule('about'))
+    v.addRule(['fruits', 'Please select some fruits', v => form.fruits.length > 0])
     v.addCustomRule('re_password', 'Passwords must match', () => form.password === form.re_password)
 })
 
@@ -102,31 +104,34 @@ const v = useValidator(form, v => {
                 variant="classic">
                 <a href="#">
                     <FormatColorFill/>
-                    <div :style="{backgroundColor: form.color}" style="width: 100%; height: 0.25em"></div>
+                    <div :style="{backgroundColor: form.color}" class="w-full h-1"></div>
                 </a>
             </UColorPicker>
 
             <UColorPicker
                 v-model="form.color"
                 variant="classic">
-                <div href="#">
+                <a href="#">
                     <FormatColorText/>
-                    <div :style="{backgroundColor: form.color}" style="width: 100%; height: 0.25em"></div>
-                </div>
+                    <div :style="{backgroundColor: form.color}" class="w-full h-1"></div>
+                </a>
             </UColorPicker>
 
             <UChoices
                 v-model="form.fruits"
                 :choices="fruits"
+                :errors="v.errors.fruits"
                 label="Favorite Fruits"
+                multiple
             />
 
             <UTextarea
                 v-model="form.about"
+                :errors="v.errors.about"
                 label="About"
             />
 
-            <UButton flat>Login</UButton>
+            <UButton>Validate</UButton>
         </form>
         <div class="p-2">
             form:

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import UChip from './UChip.vue'
-import UInput from './UInput.vue'
-import { inputEmits, inputProps } from '../helpers/input-helper'
+import UFormElement from '@/components/UFormElement.vue'
+import { inputEmits, inputProps } from '@/helpers/input-helper'
 import { computed, defineProps } from 'vue'
+import UChip from './UChip.vue'
 
 const props = defineProps({
     ...inputProps,
@@ -37,15 +37,14 @@ function onClick(choice) {
 </script>
 
 <template>
-    <UInput v-bind="$props" class="u-choices">
-        <div v-if="label" class="u-choices-label mb-2 text-small">{{ label }}</div>
-        <div class="choices-list d-flex align-items-center flex-wrap gap-2">
+    <UFormElement :errors="errors" :help-text="helpText" class="u-choices">
+        <div class="choices-list flex items-center flex-wrap gap-2">
             <UChip
                 v-for="choice in choices"
-                @click="onClick(choice)"
-                :color="isSelected(choice) ? 'primary' : ''">
+                :color="isSelected(choice) ? 'primary' : undefined"
+                @click="onClick(choice)">
                 {{ labelKey ? choice[labelKey] : choice }}
             </UChip>
         </div>
-    </UInput>
+    </UFormElement>
 </template>

@@ -1,48 +1,22 @@
 <script lang="ts" setup>
+import { getTextClass } from '@/composables/getTextClass'
+import { computed } from '@/node_modules/vue'
+import type { ColorVariant } from '@/types/misc-types'
 import { defineProps } from 'vue'
 
 const props = withDefaults(defineProps<{
-    color?: '' | 'primary' | 'secondary' | 'info' | 'danger',
+    color?: ColorVariant,
 }>(), {
-    color: '',
+    color: 'neutral',
 })
+const textClass = computed(() => getTextClass(props.color))
 
 </script>
 
 <template>
-    <div
-        v-ripple :class="color"
-        class="all-center px-4 u-chip">
+    <div v-ripple :class="`bg-${color} ${textClass} ${color === 'neutral' && 'ripple-dark'}`"
+         class="all-center has-hover cursor-pointer rounded-full px-4 py-2 w-fit shrink-0">
         <slot></slot>
     </div>
 </template>
 
-<style lang="scss">
-//@import "../styles/variables";
-//@import "../styles/functions";
-
-.u-chip {
-    width: fit-content;
-    height: 2.5rem;
-    background-color: var(--gray);
-    border-radius: calc(var(--form-element-height) / 2);
-    color: var(--main-text-color);
-    cursor: pointer;
-    flex-shrink: 0;
-
-    &:hover, &:focus {
-        background-color: var(--gray-hover);
-    }
-
-    //@each $color, $value in $theme-colors {
-    //    &.#{$color} {
-    //        background-color: var(--#{$color});
-    //        color: contrastColor($value);
-    //
-    //        &:hover {
-    //            background-color: var(--#{$color}-dark);
-    //        }
-    //    }
-    //}
-}
-</style>

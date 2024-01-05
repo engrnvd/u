@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { getTextClass } from '@/composables/getTextClass'
 import LoadingIcon from '@/icons/Loading.vue'
 import type { ColorVariant } from '@/types/misc-types'
 import { computed } from 'vue'
@@ -18,11 +19,7 @@ const p = withDefaults(defineProps<{
     hasBorder: false,
 })
 
-const textClass = computed(() => {
-    if (p.color === 'neutral' || p.color === 'warn' || p.loading) return 'text-text'
-    if (p.transparent) return `text-${p.color}`
-    return 'text-light'
-})
+const textClass = computed(() => getTextClass(p.color, p.transparent, p.loading))
 
 const classes = computed(() => ({
     [textClass.value]: true,
