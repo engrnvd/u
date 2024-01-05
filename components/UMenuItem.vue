@@ -3,15 +3,7 @@
 </script>
 
 <template>
-    <div class="px-4 py-3 d-flex align-items-center gap-4 u-menu-item">
+    <div class="flex clickable w-full gap-4 px-4 py-3 align-items-center u-menu-item bg-bg relative cursor-pointer">
         <slot></slot>
-        <div class="hover-overlay"></div>
     </div>
 </template>
-
-<style scoped lang="scss">
-.u-menu-item {
-    position: relative;
-    cursor: pointer;
-}
-</style>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useOutsideClick } from '../composables/useOutsideClick'
 import { computed, defineProps, ref } from 'vue'
+import { useOutsideClick } from '../composables/useOutsideClick'
 
 type Trigger = 'click' | 'hover'
 
@@ -51,7 +51,7 @@ let emit = defineEmits(['closed', 'update:modelValue'])
 </script>
 
 <template>
-    <div class="u-dropdown" :class="{[`trigger-${trigger}`]: true, opened: open}" ref="ddEl">
+    <div ref="ddEl" :class="{[`trigger-${trigger}`]: true, opened: open}" class="u-dropdown">
         <div
             class="u-dropdown-btn"
             @click="show('click')"
@@ -62,10 +62,10 @@ let emit = defineEmits(['closed', 'update:modelValue'])
         </div>
         <Transition :name="`slide-${up ? 'up' : 'down'}`">
             <div
+                v-if="open"
                 :class="{left, right, down, up}"
-                class="u-dropdown-content shadow-0"
-                @click="() => { if (autoClose) close() }"
-                v-if="open">
+                class="u-dropdown-content shadow min-w-full rounded"
+                @click="() => { if (autoClose) close() }">
                 <slot name="content"></slot>
             </div>
         </Transition>
@@ -87,7 +87,6 @@ let emit = defineEmits(['closed', 'update:modelValue'])
     .u-dropdown-content {
         position: absolute;
         background-color: var(--bg);
-        border-radius: var(--form-element-border-radius);
         z-index: 9;
         top: $offset;
 
