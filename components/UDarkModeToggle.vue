@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import UButton from '@/components/UButton.vue'
-import { uTheme } from '@/store/uTheme.store'
+import { uTheme } from '../store/uTheme.store'
+import UButton from './UButton.vue'
 </script>
 
 <template>
