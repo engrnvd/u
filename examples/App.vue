@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import ThemedContainer from '@/examples/views/ThemedContainer.vue'
+import { uTheme } from '@/store/uTheme.store'
 import { capitalize } from '@vue/shared'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import UCard from '../components/UCard.vue'
@@ -10,7 +11,7 @@ const route = useRoute()
 </script>
 
 <template>
-    <div class="h-screen flex overflow-hidden bg-bg-body">
+    <div :class="`theme-${uTheme.value}`" class="h-screen flex overflow-hidden bg-bg-body">
         <UCard class="m-4 shadow overflow-hidden shrink-0">
             <RouterLink v-for="route in routes" :key="route" :to="route" class="flex py-3 px-4 has-hover">
                 {{ capitalize(route.replace(/\//, '')) || 'Home' }}

@@ -71,3 +71,7 @@ p {
     scroll-behavior: smooth;
     scroll-margin-top: 2rem;
 }
+
+code {
+    @apply font-mono bg-neutral px-2 py-1 mx-1 rounded-sm leading-8 text-sm;
+}

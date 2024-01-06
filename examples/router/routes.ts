@@ -41,6 +41,10 @@ const router = createRouter({
       component: () => import('../views/ModalsPage.vue')
     },
     {
+      path: '/theme',
+      component: () => import('../views/ThemePage.vue')
+    },
+    {
       path: '/transitions',
       component: () => import('../views/TransitionsPage.vue')
     },

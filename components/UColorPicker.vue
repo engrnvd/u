@@ -1,10 +1,10 @@
-<script setup lang="ts">
-import UDropdown from './UDropdown.vue'
-import { useStorage } from 'nvd-use-storage'
-import CloseIcon from '../icons/Close.vue'
+<script lang="ts" setup>
+import { useStorage } from '@vueuse/core'
 import { computed, watchEffect } from 'vue'
 import UMenuItem from '../components/UMenuItem.vue'
+import CloseIcon from '../icons/Close.vue'
 import ColorOffIcon from '../icons/InvertColorsOff.vue'
+import UDropdown from './UDropdown.vue'
 
 const classicColors = [
     '#000000', '#434343', '#666666', '#999999', '#b7b7b7', '#cccccc', '#d9d9d9', '#efefef', '#f3f3f3', '#ffffff',
@@ -17,7 +17,7 @@ const classicColors = [
     '#5b0f00', '#660000', '#783f04', '#7f6000', '#274e13', '#0c343d', '#1c4587', '#073763', '#20124d', '#4c1130',
 ]
 
-const recentColors = useStorage('recent-colors-pallet', [])
+const recentColors = useStorage('u-recent-colors-pallet', [])
 // props
 const props = withDefaults(defineProps<{
     modelValue?: string,
@@ -56,27 +56,27 @@ watchEffect(() => {
 </script>
 
 <template>
-    <UDropdown :auto-close="false" class="apm-color-picker" :class="variant" v-bind="$attrs">
+    <UDropdown :auto-close="false" :class="variant" class="apm-color-picker" v-bind="$attrs">
         <slot>
-            <a class="apc-button"
-               href="#"
-               :style="{backgroundColor: modelValue || 'transparent'}">
+            <a :style="{backgroundColor: modelValue || 'transparent'}"
+               class="apc-button"
+               href="#">
             </a>
         </slot>
         <template #content>
             <div class="apc-dropdown">
                 <UMenuItem
+                    v-if="variant === 'classic'"
                     class="w100 mb-3 menu-item"
-                    @click="selectColor('')"
-                    v-if="variant === 'classic'">
+                    @click="selectColor('')">
                     <ColorOffIcon/>
                     Reset
                 </UMenuItem>
                 <div class="color-list mb-3">
-                    <div class="color-item"
-                         v-for="color in colorsToShow" :key="color"
+                    <div v-for="color in colorsToShow"
+                         :key="color" :class="{selected: color === modelValue}"
                          :style="{backgroundColor: color}"
-                         :class="{selected: color === modelValue}"
+                         class="color-item"
                          @click="selectColor(color)"
                     ></div>
                 </div>
@@ -86,15 +86,15 @@ watchEffect(() => {
 
                     <div class="text-muted font-weight-bold text-small mb-2">Recent</div>
                     <div class="color-list mb-3">
-                        <div class="color-item"
-                             v-for="color in recentColors" :key="color"
+                        <div v-for="color in recentColors"
+                             :key="color" :class="{selected: color === modelValue}"
                              :style="{backgroundColor: color}"
-                             :class="{selected: color === modelValue}"
+                             class="color-item"
                              @click="selectColor(color)"
                         >
                             <a v-if="color !== modelValue"
-                               @click.prevent.stop="removeColor(color)"
-                               class="remove-color-btn text-small all-center">
+                               class="remove-color-btn text-small all-center"
+                               @click.prevent.stop="removeColor(color)">
                                 <CloseIcon/>
                             </a>
                         </div>
@@ -102,9 +102,9 @@ watchEffect(() => {
                 </template>
 
                 <input
+                    :value="modelValue || '#adb5bd'"
                     class="color-input"
                     type="color"
-                    :value="modelValue || '#adb5bd'"
                     @change="e => selectColor(e.target.value)"
                 >
             </div>
@@ -112,7 +112,7 @@ watchEffect(() => {
     </UDropdown>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .apm-color-picker {
     --size: 1em;
     max-width: var(--size);
