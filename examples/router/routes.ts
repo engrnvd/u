@@ -44,6 +44,10 @@ const router = createRouter({
       path: '/transitions',
       component: () => import('../views/TransitionsPage.vue')
     },
+    {
+      path: '/tabs',
+      component: () => import('../views/TabsPage.vue')
+    },
   ]
 })
 

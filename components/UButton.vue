@@ -37,8 +37,8 @@ const classes = computed(() => ({
         v-ripple
         :class="classes"
         :disabled="loading || disabled"
-        class="relative inline-flex items-center justify-center text-sm font-semibold uppercase leading-4 tracking-widest transition duration-150 ease-in-out focus:outline-none active:shadow-none disabled:bg-neutral-darker disabled:text-muted disabled:cursor-not-allowed disabled:shadow-none">
-        <span :class="{'opacity-0': loading}"><slot/></span>
+        class="relative all-center text-sm font-semibold uppercase leading-4 tracking-widest transition duration-150 ease-in-out focus:outline-none active:shadow-none disabled:bg-neutral-darker disabled:text-muted disabled:cursor-not-allowed disabled:shadow-none">
+        <span :class="{'opacity-0': loading}" class="all-center"><slot/></span>
         <span v-if="loading" class="absolute inset-0 all-center">
             <LoadingIcon class="absolute animate-spin"/>
         </span>
