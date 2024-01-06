@@ -22,13 +22,15 @@ let emit = defineEmits(['update:modelValue'])
             :item="item"
             :selected="modelValue === item"
             @click="emit('update:modelValue', item)">
-            {{ item[titleField] || item }}
+            <slot :index="index" :item="item" :selected="modelValue === item" name="tab">
+                <div class="px-6 py-2 font-bold">{{ item[titleField] || item }}</div>
+            </slot>
         </UTabBtn>
         <div class="flex-grow border-b flex items-center">
             <slot name="end"></slot>
         </div>
     </div>
-    <div class="p-4 border border-t-0 rounded-bl rounded-br">
+    <div class="p-4 border border-t-0 rounded-bl rounded-br" v-bind="$attrs">
         <slot></slot>
     </div>
 </template>
