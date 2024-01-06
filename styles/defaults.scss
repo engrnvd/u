@@ -50,6 +50,7 @@ h4 {
 
 p {
     margin-block: 1.15em;
+    max-width: 65ch;
 }
 
 .material-design-icon {
@@ -64,4 +65,9 @@ p {
     height: 1em;
     width: 1em;
     fill: currentColor;
+}
+
+:has(:target) {
+    scroll-behavior: smooth;
+    scroll-margin-top: 2rem;
 }
