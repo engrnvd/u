@@ -91,6 +91,14 @@ const v = useValidator(form, v => {
                 class="mb-4"
                 label="I agree"
             />
+
+            <UCheckbox
+                v-model="form.agreement"
+                :errors="v.errors.agreement"
+                class="mb-4"
+            >Checkbox with slot
+            </UCheckbox>
+
             <USwitch
                 v-model="form.lights"
                 :errors="v.errors.lights"

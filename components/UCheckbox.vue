@@ -31,7 +31,7 @@ function onClick(e) {
                     <CheckboxBlankOutlineIcon v-else/>
                 </div>
             </UButton>
-            <UInputLabel v-if="label" class="select-none" color="text">
+            <UInputLabel v-if="label || $slots.default" class="select-none" color="text">
                 <slot>{{ label }}</slot>
             </UInputLabel>
         </div>

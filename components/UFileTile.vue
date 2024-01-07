@@ -2,7 +2,7 @@
 import TrashCanIcon from '../icons/TrashCan.vue'
 import formatFileSize from '../utils/format-file-size'
 import formatFileType from '../utils/format-file-type'
-import UIconBtn from './UIconBtn.vue'
+import UButton from './UButton.vue'
 
 const props = defineProps<{
     file: File,
@@ -21,9 +21,9 @@ const emit = defineEmits(['delete'])
                 {{ formatFileType(file.name) }}
             </div>
         </div>
-        <UIconBtn class="shrink-0" danger @click="emit('delete', file)">
+        <UButton class="shrink-0" color="danger" icon transparent @click="emit('delete', file)">
             <TrashCanIcon/>
-        </UIconBtn>
+        </UButton>
     </div>
 </template>
 
