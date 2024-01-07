@@ -24,7 +24,7 @@ const textClass = computed(() => getTextClass(p.color, p.transparent, p.loading)
 const classes = computed(() => ({
     [textClass.value]: true,
     [`bg-${p.color} hover:bg-${p.color}-dark`]: !p.transparent,
-    [`hover:bg-${p.color}-lighter text-${p.color}`]: p.transparent,
+    [`hover:bg-${p.color}-lighter`]: p.transparent,
     'ripple-dark': p.color === 'neutral' || p.transparent,
     'rounded-md px-4 py-2 min-w-20': !p.icon,
     'size-[2em] rounded-full justify-center': p.icon,
