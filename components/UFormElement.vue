@@ -6,7 +6,7 @@ import UInputError from './UInputError.vue'
 import UInputHelpText from './UInputHelpText.vue'
 import UInputLabel from './UInputLabel.vue'
 
-defineProps({
+let p = defineProps({
     ...inputProps,
 })
 
@@ -28,7 +28,8 @@ const emit = defineEmits([...inputEmits])
                 @update:model-value="v => emit('update:modelValue', v)"
             />
         </slot>
-        <UInputError v-for="error in errors">{{ error }}</UInputError>
+        <UInputError v-for="error in errors" v-if="Array.isArray(errors)">{{ error }}</UInputError>
+        <UInputError v-else-if="errors">{{ errors }}</UInputError>
         <UInputHelpText v-if="helpText && !errors.length">{{ helpText }}</UInputHelpText>
     </div>
 </template>

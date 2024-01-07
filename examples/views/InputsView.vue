@@ -94,8 +94,8 @@ const v = useValidator(form, v => {
 
             <UCheckbox
                 v-model="form.agreement"
-                :errors="v.errors.agreement"
                 class="mb-4"
+                errors="Error can be a string too"
             >Checkbox with slot
             </UCheckbox>
 
