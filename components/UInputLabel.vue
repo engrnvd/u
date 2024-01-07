@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TextColorVariant } from '@/types/misc-types'
+import type { TextColorVariant } from '../types/misc-types'
 
 const p = withDefaults(defineProps<{
     color?: TextColorVariant,

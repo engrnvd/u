@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import UInput from '@/components/UInput.vue'
-import UInputError from '@/components/UInputError.vue'
-import UInputHelpText from '@/components/UInputHelpText.vue'
-import UInputLabel from '@/components/UInputLabel.vue'
-import { inputEmits, inputProps } from '@/helpers/input-helper'
 import { defineProps } from 'vue'
+import { inputEmits, inputProps } from '../helpers/input-helper'
+import UInput from './UInput.vue'
+import UInputError from './UInputError.vue'
+import UInputHelpText from './UInputHelpText.vue'
+import UInputLabel from './UInputLabel.vue'
 
 defineProps({
     ...inputProps,

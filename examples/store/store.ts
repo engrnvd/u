@@ -1,5 +1,5 @@
-import type { ColorVariant } from '@/types/misc-types'
 import { reactive } from 'vue'
+import type { ColorVariant } from '../types/misc-types'
 
 export const store = reactive({
   themes: ['light', 'dark'],

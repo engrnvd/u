@@ -1,4 +1,4 @@
-import type { ColorVariant } from '@/types/misc-types'
+import type { ColorVariant } from '../../types/misc-types'
 import { useDynamicComponent } from '../useDynamicComponent'
 import Notify from './Notify.vue'
 

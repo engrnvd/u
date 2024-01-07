@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import UFormElement from '@/components/UFormElement.vue'
-import UInputLabel from '@/components/UInputLabel.vue'
-import { inputEmits, inputProps } from '@/helpers/input-helper'
-import CheckboxMarkedOutlineIcon from '@/icons/CheckboxMarkedOutline.vue'
 import { defineProps } from 'vue'
+import { inputEmits, inputProps } from '../helpers/input-helper'
 import CheckboxBlankOutlineIcon from '../icons/CheckboxBlankOutline.vue'
+import CheckboxMarkedOutlineIcon from '../icons/CheckboxMarkedOutline.vue'
 import UButton from './UButton.vue'
+import UFormElement from './UFormElement.vue'
+import UInputLabel from './UInputLabel.vue'
 
 const props = defineProps({
     ...inputProps

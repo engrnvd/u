@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import UTabBtn from '@/components/UTabs/UTabBtn.vue'
+import UTabBtn from './UTabs/UTabBtn.vue'
 
 type ModelType = string | number | Object
 

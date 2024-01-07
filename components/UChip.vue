@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { getTextClass } from '@/composables/getTextClass'
-import { computed } from '@/node_modules/vue'
-import type { ColorVariant } from '@/types/misc-types'
-import { defineProps } from 'vue'
+import { computed, defineProps } from 'vue'
+import { getTextClass } from '../composables/getTextClass'
+import type { ColorVariant } from '../types/misc-types'
 
 const props = withDefaults(defineProps<{
     color?: ColorVariant,

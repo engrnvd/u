@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import UInputHelpText from '@/components/UInputHelpText.vue'
+import UInputHelpText from './UInputHelpText.vue'
 </script>
 
 <template>

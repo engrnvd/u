@@ -21,11 +21,11 @@
 </template>
 
 <script lang="ts">
-import { getTextClass } from '@/composables/getTextClass'
-import type { ColorVariant } from '@/types/misc-types'
 import AlertCircleIcon from '../../icons/AlertCircle.vue'
 import CheckCircleIcon from '../../icons/CheckCircle.vue'
 import InformationIcon from '../../icons/Information.vue'
+import type { ColorVariant } from '../../types/misc-types'
+import { getTextClass } from '../getTextClass'
 
 export default {
     components: { InformationIcon, AlertCircleIcon, CheckCircleIcon },

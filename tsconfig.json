@@ -9,9 +9,6 @@
       "vite/client"
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ]
     },
     "baseUrl": "."
   },

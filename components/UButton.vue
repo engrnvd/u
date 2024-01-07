@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { getTextClass } from '@/composables/getTextClass'
-import LoadingIcon from '@/icons/Loading.vue'
-import type { ColorVariant } from '@/types/misc-types'
 import { computed } from 'vue'
+import { getTextClass } from '../composables/getTextClass'
+import LoadingIcon from '../icons/Loading.vue'
+import type { ColorVariant } from '../types/misc-types'
 
 const p = withDefaults(defineProps<{
     color?: ColorVariant,

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import UInputHelpText from '@/components/UInputHelpText.vue'
-import AlertIcon from '@/icons/Alert.vue'
-import TrayArrowUpIcon from '@/icons/TrayArrowUp.vue'
 import { computed, ref } from 'vue'
+import AlertIcon from '../icons/Alert.vue'
 import PlusIcon from '../icons/Plus.vue'
+import TrayArrowUpIcon from '../icons/TrayArrowUp.vue'
 import accepted from '../utils/accepted-file-type'
 import UFileTile from './UFileTile.vue'
+import UInputHelpText from './UInputHelpText.vue'
 
 const props = withDefaults(defineProps<{
     files: File[],

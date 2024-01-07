@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import UFormElement from '@/components/UFormElement.vue'
-import { inputEmits, inputProps } from '@/helpers/input-helper'
 import { computed, defineProps } from 'vue'
+import { inputEmits, inputProps } from '../helpers/input-helper'
 import UChip from './UChip.vue'
+import UFormElement from './UFormElement.vue'
 
 const props = defineProps({
     ...inputProps,

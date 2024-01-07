@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import UFormElement from '@/components/UFormElement.vue'
 import { computed, defineProps, ref } from 'vue'
 import { inputEmits, inputProps } from '../helpers/input-helper'
 import CheckBoldIcon from '../icons/CheckBold.vue'
 import MenuDownIcon from '../icons/MenuDown.vue'
 import UDropdown from './UDropdown.vue'
+import UFormElement from './UFormElement.vue'
 import UInput from './UInput.vue'
 import UMenuItem from './UMenuItem.vue'
 
