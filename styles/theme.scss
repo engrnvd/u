@@ -42,6 +42,7 @@
     --hover-overlay: rgba(0, 0, 0, 0.05);
     --active-overlay: rgba(0, 0, 0, 0.08);
     --overlay: rgba(0, 0, 0, 0.85);
+    --shadow: 0 2px 2px 0 rgb(0 0 0 / 0.2), 0 1px 5px 0 rgb(0 0 0 / 0.1);
 }
 
 .theme-dark {
@@ -59,6 +60,7 @@
     --neutral: rgba(133, 144, 155, 0.2);
     --neutral-dark: rgba(133, 144, 155, 0.3);
     --neutral-darker: rgba(133, 144, 155, 0.4);
+    --shadow: 0 2px 3px 0 rgb(0 0 0 / 0.3), 0 1px 6px 0 rgb(0 0 0 / 0.15);
 }
 
 .theme-dark, .ripple-dark {
