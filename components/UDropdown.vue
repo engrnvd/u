@@ -51,8 +51,9 @@ let emit = defineEmits(['closed', 'update:modelValue'])
 </script>
 
 <template>
-    <div ref="ddEl" :class="{[`trigger-${trigger}`]: true, opened: open}" class="u-dropdown">
+    <div ref="ddEl" :class="{[`trigger-${trigger}`]: true, opened: open}" class="u-dropdown relative inline-block">
         <div
+            :class="{'cursor-pointer': trigger === 'click'}"
             class="u-dropdown-btn"
             @click="show('click')"
             @mouseenter="show('hover')"
@@ -63,8 +64,8 @@ let emit = defineEmits(['closed', 'update:modelValue'])
         <Transition :name="`slide-${up ? 'up' : 'down'}`">
             <div
                 v-if="open"
-                :class="{left, right, down, up}"
-                class="u-dropdown-content shadow min-w-full rounded"
+                :class="{left, right, down, up, 'right-0': left}"
+                class="u-dropdown-content shadow min-w-full rounded absolute bg-bg z-20"
                 @click="() => { if (autoClose) close() }">
                 <slot name="content"></slot>
             </div>
@@ -74,25 +75,10 @@ let emit = defineEmits(['closed', 'update:modelValue'])
 
 <style lang="scss">
 .u-dropdown {
-    position: relative;
-    display: inline-block;
     $offset: calc(100% + 0.25rem);
 
-    .u-dropdown-btn {
-        &.trigger-click {
-            cursor: pointer;
-        }
-    }
-
     .u-dropdown-content {
-        position: absolute;
-        background-color: var(--bg);
-        z-index: 9;
         top: $offset;
-
-        &.left {
-            right: 0;
-        }
 
         &.up {
             top: unset;

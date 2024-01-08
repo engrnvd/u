@@ -4,7 +4,7 @@
         <TransitionGroup class="relative" name="list-slide" tag="div">
             <div v-for="item in items" :key="item.id"
                  :class="{[`bg-${item.options.type}`]: true, [getTextClass(item.options.type)]: true}"
-                 class="shadow flex items-center space-x-2 p-4 rounded cursor-pointer opacity-95 mt-4 text-xs hover:opacity-100"
+                 class="shadow flex items-center space-x-2 p-4 rounded cursor-pointer mt-4 text-xs"
                  @click="removeItem(item)">
                 <div class="all-center text-2xl">
                     <CheckCircleIcon v-if="item.options.type === 'success'"/>
