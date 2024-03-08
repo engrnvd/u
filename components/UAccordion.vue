@@ -24,8 +24,23 @@ function updateHeight() {
 }
 
 watch(() => props.modelValue, updateHeight)
-onMounted(updateHeight)
+onMounted(() => {
+    const observer = new MutationObserver(mutationsList => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                // Content of the div has changed, perform actions as needed
+                // You may also check for specific changes like node addition/removal
+                // and then respond accordingly
+                updateHeight();
+            }
+        }
+    });
 
+    observer.observe(bodyEl.value, {
+        childList: true,
+        subtree: true
+    });
+})
 defineExpose({ updateHeight })
 </script>
 
