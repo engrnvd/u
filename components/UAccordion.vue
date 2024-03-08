@@ -26,6 +26,8 @@ function updateHeight() {
 
 watch(() => props.modelValue, updateHeight)
 onMounted(() => {
+    updateHeight()
+
     const observer = new MutationObserver(mutationsList => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
