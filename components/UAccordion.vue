@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ArrowRightIcon from '../icons/ChevronRight.vue'
-import { onMounted, ref, watch } from 'vue'
+import {onMounted, ref, watch} from 'vue'
 
 const props = defineProps<{
     modelValue: any,
@@ -9,6 +9,7 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['update:modelValue'])
 const bodyEl = ref()
+const wrapperEl = ref()
 
 function toggle() {
     let emittedValue = props.modelValue === props.value ? null : props.value
@@ -17,7 +18,7 @@ function toggle() {
 
 function updateHeight() {
     if (props.modelValue === props.value) {
-        bodyEl.value.style.height = `${bodyEl.value.scrollHeight}px`
+        bodyEl.value.style.height = `${wrapperEl.value.scrollHeight}px`
     } else {
         bodyEl.value.style.height = 0
     }
@@ -41,7 +42,8 @@ onMounted(() => {
         subtree: true
     });
 })
-defineExpose({ updateHeight })
+
+defineExpose({updateHeight})
 </script>
 
 <template>
@@ -55,7 +57,9 @@ defineExpose({ updateHeight })
             <ArrowRightIcon class="icon" :class="{'opened': modelValue === value}"/>
         </div>
         <div ref="bodyEl" class="body">
-            <slot></slot>
+            <div class="wrapper" ref="wrapperEl">
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
