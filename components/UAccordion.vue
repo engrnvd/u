@@ -6,6 +6,10 @@ const props = defineProps<{
     modelValue: any,
     label?: string,
     value: any,
+    isFlat: {
+        type: boolean,
+        default: false,
+    }
 }>()
 const emit = defineEmits(['update:modelValue'])
 const bodyEl = ref()
@@ -49,7 +53,7 @@ defineExpose({updateHeight})
 </script>
 
 <template>
-    <div class="u-accordion card">
+    <div class="u-accordion card" :class="{'flat': isFlat}">
         <div class="header clickable p-3 align-items-center d-flex justify-content-between align-items-center"
              :class="{'border-b1': modelValue === value}"
              @click="toggle">
@@ -80,6 +84,10 @@ defineExpose({updateHeight})
                 transform: rotate(90deg);
             }
         }
+    }
+
+    &.flat {
+        box-shadow: none !important;
     }
 
     .body {
