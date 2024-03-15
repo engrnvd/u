@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import ArrowRightIcon from '../icons/ChevronRight.vue'
-import { onMounted, ref, watch } from 'vue'
+import {onMounted, ref, watch} from 'vue'
 
 const props = defineProps<{
     modelValue: any,
     label?: string,
     value: any,
+    isFlat: {
+        type: boolean,
+        default: false,
+    }
 }>()
 const emit = defineEmits(['update:modelValue'])
 const bodyEl = ref()
+const wrapperEl = ref()
 
 function toggle() {
     let emittedValue = props.modelValue === props.value ? null : props.value
@@ -17,20 +22,38 @@ function toggle() {
 
 function updateHeight() {
     if (props.modelValue === props.value) {
-        bodyEl.value.style.height = `${bodyEl.value.scrollHeight}px`
+        bodyEl.value.style.height = `${wrapperEl.value.scrollHeight}px`
     } else {
         bodyEl.value.style.height = 0
     }
 }
 
 watch(() => props.modelValue, updateHeight)
-onMounted(updateHeight)
+onMounted(() => {
+    updateHeight()
 
-defineExpose({ updateHeight })
+    const observer = new MutationObserver(mutationsList => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                // Content of the div has changed, perform actions as needed
+                // You may also check for specific changes like node addition/removal
+                // and then respond accordingly
+                updateHeight();
+            }
+        }
+    });
+
+    observer.observe(bodyEl.value, {
+        childList: true,
+        subtree: true
+    });
+})
+
+defineExpose({updateHeight})
 </script>
 
 <template>
-    <div class="u-accordion card">
+    <div class="u-accordion card" :class="{'flat': isFlat}">
         <div class="header clickable p-3 align-items-center d-flex justify-content-between align-items-center"
              :class="{'border-b1': modelValue === value}"
              @click="toggle">
@@ -40,7 +63,9 @@ defineExpose({ updateHeight })
             <ArrowRightIcon class="icon" :class="{'opened': modelValue === value}"/>
         </div>
         <div ref="bodyEl" class="body">
-            <slot></slot>
+            <div class="wrapper" ref="wrapperEl">
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
@@ -59,6 +84,10 @@ defineExpose({ updateHeight })
                 transform: rotate(90deg);
             }
         }
+    }
+
+    &.flat {
+        box-shadow: none !important;
     }
 
     .body {
