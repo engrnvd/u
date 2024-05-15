@@ -41,6 +41,10 @@ const router = createRouter({
       component: () => import('../views/ModalsPage.vue')
     },
     {
+      path: '/ratings',
+      component: () => import('../views/RatingsView.vue')
+    },
+    {
       path: '/theme',
       component: () => import('../views/ThemePage.vue')
     },

@@ -57,8 +57,7 @@ async function update() {
         ref="acc"
         v-model="standaloneOpen"
         :value="true"
-        label="Standalone Accordion"
-    >
+        label="Standalone Accordion">
         <div class="p-4">
             <pre class="p-4">{{ standaloneBody }}</pre>
             <a href="#" @click.prevent="update">Add</a>
