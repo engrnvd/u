@@ -17,6 +17,16 @@
     opacity: 0;
 }
 
+/* height */
+.height-enter-active, .height-leave-active {
+    transition: all 0.25s ease;
+    transform-origin: top;
+}
+
+.height-enter-from, .height-leave-to {
+    transform: scaleY(0);
+}
+
 /* slide-up */
 .slide-up-enter-active, .slide-up-leave-active {
     transition: all 0.25s ease;

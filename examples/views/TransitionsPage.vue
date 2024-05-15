@@ -8,6 +8,7 @@ let items = reactive([
     { t: 'slide-down', open: true },
     { t: 'slide-up', open: true },
     { t: 'zoom-in', open: true },
+    { t: 'height', open: true },
     { t: 'list', open: true }
 ])
 
