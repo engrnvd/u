@@ -11,7 +11,7 @@ const p = withDefaults(defineProps<{
     disabled?: boolean,
     hasBorder?: boolean,
     transparent?: boolean,
-    tag?: string,
+    tag?: any,
 }>(), {
     color: 'primary',
     icon: false,
