@@ -12,6 +12,13 @@ const alts = reactive(['solid', 'transparent', 'outline'])
 
 <template>
     <div>
+        <div class="mb-5">
+            <h2>Button as a link</h2>
+            <div>
+                <UButton href="https://google.com" tag="a" target="_blank">Go to google</UButton>
+            </div>
+        </div>
+
         <div v-for="type in types">
             <div v-for="alt in alts" class="mb-5 pb-4">
                 <h2 class="capitalize">{{ type }} {{ alt }}</h2>
