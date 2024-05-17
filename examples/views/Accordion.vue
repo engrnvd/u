@@ -1,6 +1,6 @@
 <script setup>
-import UAccordion from "../../components/UAccordion.vue"
 import { reactive, ref } from "vue"
+import UAccordion from "../../components/UAccordion.vue"
 
 const examples = reactive([
     {
@@ -43,8 +43,10 @@ async function update() {
 <template>
     <UAccordion
         v-for="(example, idx) in examples"
-        :value="example.label"
         v-model="selected"
+        :accordion-classes="{'!bg-bg': true}"
+        :value="example.label"
+        class="rounded-none border-0 border-t !m-0"
     >
         <pre class="p-4">{{ example.desc }}</pre>
     </UAccordion>

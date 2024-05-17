@@ -1,12 +1,13 @@
-<script setup lang="ts">
-import ArrowRightIcon from '../icons/ChevronRight.vue'
+<script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue'
+import ArrowRightIcon from '../icons/ChevronRight.vue'
 import UCard from './UCard.vue'
 
 const props = defineProps<{
     modelValue: any,
     label?: string,
     value: any,
+    accordionClasses?: any,
 }>()
 const emit = defineEmits(['update:modelValue'])
 const bodyEl = ref()
@@ -35,12 +36,14 @@ defineExpose({ updateHeight })
 <template>
     <UCard class="overflow-hidden my-2 bg-bg text-text border">
         <div
-            class="clickable px-4 py-3 bg-neutral-light items-center flex justify-between cursor-pointer"
+            :class="{'text-primary': modelValue === value, ...accordionClasses}"
+            class="clickable font-bold px-4 py-3 bg-neutral-light items-center flex justify-between cursor-pointer"
             @click="toggle">
             <div>
                 <slot name="header">{{ label || value }}</slot>
             </div>
-            <ArrowRightIcon class="transition-transform duration-300" :class="{'rotate-90': modelValue === value}"/>
+            <ArrowRightIcon :class="{'rotate-90': modelValue === value}"
+                            class="transition-transform duration-300 text-xl"/>
         </div>
         <div ref="bodyEl" class="relative transition-[height] duration-300">
             <slot></slot>
