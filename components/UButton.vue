@@ -9,7 +9,6 @@ const p = withDefaults(defineProps<{
     icon?: boolean,
     loading?: boolean,
     disabled?: boolean,
-    hasBorder?: boolean,
     transparent?: boolean,
     tag?: any,
 }>(), {
@@ -17,7 +16,6 @@ const p = withDefaults(defineProps<{
     icon: false,
     loading: false,
     disabled: false,
-    hasBorder: false,
     tag: 'button',
 })
 
