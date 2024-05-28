@@ -11,12 +11,14 @@ const props = withDefaults(defineProps<{
     beforeChange?: ((file: File) => void | Promise<void>) | null,
     disabled?: boolean,
     max?: number,
+    multiple?: boolean,
 }>(), {
     files: () => [],
     accept: null,
     beforeChange: null,
     disabled: false,
     max: Infinity,
+    multiple: true,
 })
 
 let dragActive = ref(false)
@@ -87,7 +89,7 @@ const emit = defineEmits(['change'])
         <input
             v-show="false"
             type="file"
-            multiple
+            :multiple="multiple"
             @change="acceptUpload"
             ref="inputElement"
             :accept="accept"
