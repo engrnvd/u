@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<{
     disabled?: boolean,
     max?: number,
     multiple?: boolean,
+    label?: string
 }>(), {
     files: () => [],
     accept: null,
@@ -19,6 +20,7 @@ const props = withDefaults(defineProps<{
     disabled: false,
     max: Infinity,
     multiple: true,
+    label: ''
 })
 
 let dragActive = ref(false)
@@ -103,6 +105,7 @@ const emit = defineEmits(['change'])
                     <i v-if="disabled">file upload unavailable</i>
                     <i v-else-if="wrongType">incorrect file type</i>
                     <i v-else-if="dragActive">release to upload</i>
+                    <i v-else-if="label">{{ label }}</i>
                     <i v-else>drag &amp; drop here or click to upload files</i>
                 </div>
             </slot>
