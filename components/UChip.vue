@@ -2,7 +2,7 @@
 import { defineProps } from 'vue'
 
 const props = withDefaults(defineProps<{
-    color?: '' | 'primary' | 'secondary' | 'info' | 'danger',
+    color?: '' | 'primary' | 'secondary' | 'info' | 'danger'  | 'disabled',
 }>(), {
     color: '',
 })
