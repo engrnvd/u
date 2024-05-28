@@ -13,12 +13,18 @@ const props = withDefaults(defineProps<{
     beforeChange?: ((file: File) => void | Promise<void>) | null,
     disabled?: boolean,
     max?: number,
+    title?: string,
+    subtitle?: string,
+    hideSubTitle?: boolean,
 }>(), {
     files: () => [],
     accept: null,
     beforeChange: null,
     disabled: false,
     max: Infinity,
+    title: '',
+    subtitle: '',
+    hideSubTitle: false,
 })
 
 let dragActive = ref(false)
@@ -26,6 +32,10 @@ let wrongType = ref(false)
 let emptyLayer = ref(null)
 let dropzoneLayer = ref(null)
 let inputElement = ref(null)
+
+const filesStr = computed(() => `file${props.max > 1 ? 's' : ''}`)
+const label = computed(() => props.title || `Drag and drop ${filesStr.value} here`)
+const subLabel = computed(() => props.hideSubTitle ? '' : (props.subtitle || `or choose ${filesStr.value} from device`))
 
 function checkTypesEarly(e) {
     wrongType.value = [...e.dataTransfer.items].some(file => !accepted(props.accept, file))
@@ -107,10 +117,8 @@ let canAddFiles = computed(() => !props.disabled && props.files.length < props.m
                     <div v-if="disabled">File upload unavailable</div>
                     <div v-else-if="wrongType">Incorrect file type</div>
                     <div v-else>
-                        <div class="text-semi-muted">Drag and drop files{{ max > 1 ? 's' : '' }} here</div>
-                        <div class="font-normal text-sm">
-                            or choose file{{ max > 1 ? 's' : '' }} from device
-                        </div>
+                        <div class="text-semi-muted">{{ label }}</div>
+                        <div v-if="!hideSubTitle" class="font-normal text-sm">{{ subLabel }}</div>
                     </div>
                 </div>
             </slot>

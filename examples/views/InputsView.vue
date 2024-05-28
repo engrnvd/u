@@ -84,6 +84,13 @@ const v = useValidator(form, v => {
             />
 
             <UFileUpload :files="form.files" :max="2" accept="image/*"/>
+            <UFileUpload
+                :files="form.files"
+                :max="1"
+                accept="application/pdf"
+                hide-sub-title
+                title="Upload your resume here"
+            />
 
             <UCheckbox
                 v-model="form.agreement"
