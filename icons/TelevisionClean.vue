@@ -1,18 +1,16 @@
-<template functional>
-  <span :aria-hidden="props.decorative"
-        :aria-label="props.title"
-        :class="[data.class, data.staticClass]"
+<template>
+  <span :aria-hidden="decorative"
+        :aria-label="title"
         class="material-design-icon television-clean-icon"
-        role="img"
-        v-bind="data.attrs"
-        v-on="listeners">
-    <svg :fill="props.fillColor"
+        role="img">
+    <svg :fill="fillColor"
+         :height="size"
+         :width="size"
          class="material-design-icon__svg"
-         :width="props.size"
-         :height="props.size"
          viewBox="0 0 24 24">
-      <path d="M21 17H3V5H21M21 3H3C1.9 3 1 3.9 1 5V17C1 18.11 1.9 19 3 19H8V21H16V19H21C22.11 19 23 18.11 23 17V5C23 3.9 22.11 3 21 3M15 6.5L14.38 7.87L13 8.5L14.38 9.13L15 10.5L15.63 9.13L17 8.5L15.63 7.87L15 6.5M10.5 8.5L9.41 10.91L7 12L9.41 13.09L10.5 15.5L11.6 13.09L14 12L11.6 10.91L10.5 8.5">
-        <title>{{ props.title }}</title>
+      <path
+          d="M21 17H3V5H21M21 3H3C1.9 3 1 3.9 1 5V17C1 18.11 1.9 19 3 19H8V21H16V19H21C22.11 19 23 18.11 23 17V5C23 3.9 22.11 3 21 3M15 6.5L14.38 7.87L13 8.5L14.38 9.13L15 10.5L15.63 9.13L17 8.5L15.63 7.87L15 6.5M10.5 8.5L9.41 10.91L7 12L9.41 13.09L10.5 15.5L11.6 13.09L14 12L11.6 10.91L10.5 8.5">
+        <title>{{ title }}</title>
       </path>
     </svg>
   </span>
@@ -20,24 +18,24 @@
 
 <script>
 export default {
-  name: "TelevisionCleanIcon",
-  props: {
-    title: {
-      type: String,
-      default: "Television Clean icon"
-    },
-    decorative: {
-      type: Boolean,
-      default: false
-    },
-    fillColor: {
-      type: String,
-      default: "currentColor"
-    },
-    size: {
+    name: "TelevisionCleanIcon",
+    props: {
+        title: {
+            type: String,
+            default: "Television Clean icon"
+        },
+        decorative: {
+            type: Boolean,
+            default: false
+        },
+        fillColor: {
+            type: String,
+            default: "currentColor"
+        },
+        size: {
 
-      default: '1em'
+            default: '1em'
+        }
     }
-  }
 }
 </script>
