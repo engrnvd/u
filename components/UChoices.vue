@@ -9,6 +9,7 @@ const props = defineProps({
     choices: {type: Array, default: () => []},
     multiple: {type: Boolean, default: false},
     labelKey: {type: String, required: false, default: null},
+    labelFn: { type: Function, required: false },
     disableFn: {type: Function, default: null}
 })
 const emit = defineEmits([...inputEmits])
@@ -43,6 +44,12 @@ function onClick(choice) {
     }
 }
 
+function getLabel(choice) {
+    if (props.labelFn) return props.labelFn(choice)
+    if (props.labelKey) return choice[props.labelKey]
+    return choice
+}
+
 </script>
 
 <template>
@@ -54,7 +61,7 @@ function onClick(choice) {
                 v-for="choice in choices"
                 @click="onClick(choice)"
                 :color="isSelected(choice) ? 'primary' :  isDisabled(choice) ? 'disabled' : ''">
-                {{ labelKey ? choice[labelKey] : choice }}
+                {{ getLabel(choice) }}
             </UChip>
         </div>
     </UInput>
