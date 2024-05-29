@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import UChip from './UChip.vue'
 import UInput from './UInput.vue'
-import { inputEmits, inputProps } from '../helpers/input-helper'
-import { computed, defineProps } from 'vue'
+import {inputEmits, inputProps} from '../helpers/input-helper'
+import {computed, defineProps} from 'vue'
 
 const props = defineProps({
     ...inputProps,
-    choices: { type: Array, default: () => [] },
-    multiple: { type: Boolean, default: false },
-    labelKey: { type: String, required: false, default: null },
+    choices: {type: Array, default: () => []},
+    multiple: {type: Boolean, default: false},
+    labelKey: {type: String, required: false, default: null},
+    disableFn: {type: Function, default: null}
 })
 const emit = defineEmits([...inputEmits])
 
@@ -22,7 +23,15 @@ function isSelected(choice) {
     return _value.value.includes(choice)
 }
 
+function isDisabled(choice) {
+    if (props.disableFn && typeof props.disableFn === 'function') {
+        return props.disableFn(choice)
+    }
+    return false
+}
+
 function onClick(choice) {
+    if (isDisabled(choice)) return;
     if (!props.multiple) {
         _value.value = choice
         return
@@ -41,9 +50,10 @@ function onClick(choice) {
         <div v-if="label" class="u-choices-label mb-2 text-small">{{ label }}</div>
         <div class="choices-list d-flex align-items-center flex-wrap gap-2">
             <UChip
+                :style="{cursor: isDisabled(choice) ? 'not-allowed' : 'pointer'}"
                 v-for="choice in choices"
                 @click="onClick(choice)"
-                :color="isSelected(choice) ? 'primary' : ''">
+                :color="isSelected(choice) ? 'primary' :  isDisabled(choice) ? 'disabled' : ''">
                 {{ labelKey ? choice[labelKey] : choice }}
             </UChip>
         </div>
