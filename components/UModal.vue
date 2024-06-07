@@ -16,6 +16,8 @@ export interface UModalProps {
     noFooter?: boolean,
     size?: 'sm' | 'md' | 'lg' | 'xlg',
     bodyClass?: string,
+    headerClass?: string,
+    showCloseBtn: boolean,
 }
 
 const p = withDefaults(defineProps<UModalProps>(), {
@@ -29,6 +31,7 @@ const p = withDefaults(defineProps<UModalProps>(), {
     okDisabled: false,
     okLoading: false,
     okOnly: false,
+    showCloseBtn: true
 })
 
 const emit = defineEmits(['ok', 'cancel', 'update:modelValue'])
@@ -54,7 +57,7 @@ function hideModal() {
         <div class="apm-modal-parent all-center" v-show="modelValue">
             <transition name="slide-down">
                 <div v-if="modelValue" class="apm-modal shadow" :class="`modal-${size}`">
-                    <div class="apm-modal-header">
+                    <div class="apm-modal-header" :class="headerClass">
                         <slot name="header">
                             <h2 class="m-0">{{ title }}</h2>
                         </slot>
@@ -71,7 +74,7 @@ function hideModal() {
                             <UButton secondary v-if="!okOnly || cancelOnly" @click="cancel">{{ cancelTitle }}</UButton>
                         </slot>
                     </div>
-                    <a href="" class="close-modal-btn text-muted" @click.prevent="cancel">
+                    <a href="" class="close-modal-btn text-muted" @click.prevent="cancel" v-if="showCloseBtn">
                         <CloseIcon/>
                     </a>
                 </div>
