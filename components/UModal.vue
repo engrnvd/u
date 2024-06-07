@@ -18,6 +18,7 @@ export interface UModalProps {
     bodyClass?: string,
     headerClass?: string,
     showCloseBtn: boolean,
+    footerClass?: string,
 }
 
 const p = withDefaults(defineProps<UModalProps>(), {
@@ -65,7 +66,7 @@ function hideModal() {
                     <div class="apm-modal-body" :class="bodyClass">
                         <slot></slot>
                     </div>
-                    <div v-if="!noFooter" class="apm-modal-footer d-flex gap-4">
+                    <div v-if="!noFooter" class="apm-modal-footer d-flex gap-4" :class="footerClass">
                         <slot name="footer">
                             <UButton @click="ok" v-if="!cancelOnly || okOnly" :loading="okLoading"
                                      :disabled="okDisabled">
