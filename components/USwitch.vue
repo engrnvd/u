@@ -81,6 +81,10 @@ function toggle() {
                     user-select: none;
                     cursor: not-allowed;
                 }
+
+                &.disabled:before {
+                    background: var(--disabled-text-color);
+                }
             }
 
             &.on {
