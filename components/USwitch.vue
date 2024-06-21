@@ -4,7 +4,11 @@ import { inputEmits, inputProps } from '../helpers/input-helper'
 import { computed, defineProps } from 'vue'
 
 const props = defineProps({
-    ...inputProps
+    ...inputProps,
+    disabled: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const emit = defineEmits([...inputEmits])
@@ -14,12 +18,17 @@ const _value = computed({
     set: v => emit('update:modelValue', v)
 })
 
+function toggle() {
+    if (props.disabled) return
+    _value.value = !_value.value
+}
+
 </script>
 
 <template>
-    <UInput v-bind="$props" class="u-switch" @click.prevent="_value = !_value">
+    <UInput v-bind="$props" class="u-switch" @click.prevent="toggle">
         <div class="switch" :class="{on: _value, off: !_value}">
-            <span class="slider"></span>
+            <span class="slider" :class="{disabled: disabled}"></span>
         </div>
         <div v-if="label">{{ label }}</div>
     </UInput>
@@ -66,6 +75,11 @@ const _value = computed({
                     background-color: rgba(255, 255, 255, 0.9);
                     transition: transform 0.2s ease-out;
                     border-radius: 50%;
+                }
+
+                &.disabled {
+                    user-select: none;
+                    cursor: not-allowed;
                 }
             }
 
