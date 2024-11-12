@@ -14,7 +14,7 @@ const emit = defineEmits(['delete'])
 <template>
     <div class="bg-bg text-text rounded shadow p-3 flex items-center text-sm">
         <div class="flex-grow">
-            <div :title="file.name" class="mb-1 truncate w-56">{{ file.name }}</div>
+            <div :title="file.name" class="mb-1 truncate max-w-48">{{ file.name }}</div>
             <div class="text-xs text-muted">
                 {{ formatFileSize(file.size) }}
                 •

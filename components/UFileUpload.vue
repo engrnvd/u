@@ -36,6 +36,7 @@ let inputElement = ref(null)
 const filesStr = computed(() => `file${props.max > 1 ? 's' : ''}`)
 const label = computed(() => props.title || `Drag and drop ${filesStr.value} here`)
 const subLabel = computed(() => props.hideSubTitle ? '' : (props.subtitle || `or choose ${filesStr.value} from device`))
+const multiple = computed(() => typeof props.max !== 'number' || props.max > 1)
 
 function checkTypesEarly(e) {
     wrongType.value = [...e.dataTransfer.items].some(file => !accepted(props.accept, file))
@@ -105,7 +106,7 @@ let canAddFiles = computed(() => !props.disabled && props.files.length < props.m
             :accept="accept"
             :disabled="!canAddFiles"
             class="absolute h-0 w-0"
-            multiple
+            :multiple="multiple"
             type="file"
             v-bind="{...$attrs}"
             @change="acceptUpload"
@@ -144,7 +145,7 @@ let canAddFiles = computed(() => !props.disabled && props.files.length < props.m
                     class="z-30 my-2"
                     @delete="deleteFile"
                 />
-                <UInputHelpText v-if="files.length >= max" class="flex items-center space-x-1">
+                <UInputHelpText v-if="multiple && files.length >= max" class="flex items-center space-x-1">
                     <AlertIcon class="text-warn"/>
                     <div>Max {{ max }} files allowed</div>
                 </UInputHelpText>
