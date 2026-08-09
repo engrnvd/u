@@ -1,12 +1,13 @@
+@use "styles/utilities";
+@use "styles/theme";
+@use "styles/defaults";
+@use "styles/ripple";
+@use "styles/transitions";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    @import "styles/utilities";
+    @include utilities.base;
 }
-
-@import "styles/theme";
-@import "styles/defaults";
-@import "styles/ripple";
-@import "styles/transitions";

@@ -1,22 +1,23 @@
-.all-center {
-    @apply flex items-center justify-center
-}
-
-.has-hover, .clickable {
-    @apply cursor-pointer relative;
-
-    &:after {
-        @apply content-[''] bg-[var(--hover-overlay)] absolute rounded-[inherit] w-full h-full left-0 top-0 opacity-0 transition;
+@mixin base {
+    .all-center {
+        @apply flex items-center justify-center
     }
 
-    &:hover:after {
-        @apply opacity-100
+    .has-hover, .clickable {
+        @apply cursor-pointer relative;
+
+        &:after {
+            @apply content-[''] bg-[var(--hover-overlay)] absolute rounded-[inherit] w-full h-full left-0 top-0 opacity-0 transition;
+        }
+
+        &:hover:after {
+            @apply opacity-100
+        }
+    }
+
+    .clickable {
+        &:active:after {
+            @apply bg-[var(--active-overlay)]
+        }
     }
 }
-
-.clickable {
-    &:active:after {
-        @apply bg-[var(--active-overlay)]
-    }
-}
-
