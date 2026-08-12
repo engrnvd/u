@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue'
 import { inputEmits, inputProps } from '../helpers/input-helper'
 import UInput from './UInput.vue'
 import UInputError from './UInputError.vue'

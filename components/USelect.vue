@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, defineProps, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { inputEmits, inputProps } from '../helpers/input-helper'
 import CheckBoldIcon from '../icons/CheckBold.vue'
 import MenuDownIcon from '../icons/MenuDown.vue'
@@ -84,7 +84,7 @@ const emit = defineEmits([...inputEmits])
 
         <template #content>
             <TransitionGroup class="py-2 w-full relative overflow-hidden" name="list" tag="div">
-                <div v-for="option in filteredItems" :key="option" class="overflow-hidden">
+                <div v-for="option in filteredItems" :key="option as PropertyKey" class="overflow-hidden">
                     <UMenuItem @click="select(option)">
                         <div class="flex-grow">{{ getLabel(option) }}</div>
                         <CheckBoldIcon v-if="selectedOption === option" class="text-primary"/>
