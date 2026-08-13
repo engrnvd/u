@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, defineProps } from 'vue'
+import { computed } from 'vue'
 import { inputEmits, inputProps } from '../helpers/input-helper'
 import UChip from './UChip.vue'
 import UFormElement from './UFormElement.vue'

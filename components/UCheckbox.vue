@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue'
 import { inputEmits, inputProps } from '../helpers/input-helper'
 import CheckboxBlankOutlineIcon from '../icons/CheckboxBlankOutline.vue'
 import CheckboxMarkedOutlineIcon from '../icons/CheckboxMarkedOutline.vue'
