@@ -1,5 +1,5 @@
 export const inputProps = {
-  modelValue: {},
+  modelValue: null,
   label: String,
   helpText: String,
   errors: { type: undefined, default: () => [] },
