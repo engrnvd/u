@@ -14,7 +14,7 @@ const textClass = computed(() => getTextClass(props.color))
 
 <template>
     <div v-ripple :class="`bg-${color} ${textClass} ${color === 'neutral' && 'ripple-dark'}`"
-         class="all-center has-hover cursor-pointer rounded-full px-4 py-2 w-fit shrink-0">
+         class="u-chip all-center has-hover cursor-pointer rounded-full px-4 py-2 w-fit shrink-0">
         <slot></slot>
     </div>
 </template>
