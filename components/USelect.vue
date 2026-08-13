@@ -64,7 +64,7 @@ const emit = defineEmits([...inputEmits])
                     v-if="modelValue && !query"
                     :class="{'!border-danger': errors.length}"
                     :label="label"
-                    :model-value="getLabel(modelValue)"
+                    :model-value="getLabel(selectedOption)"
                     class="w-full"
                     @keydown="selectedOptionEdited"
                 />
