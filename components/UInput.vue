@@ -22,7 +22,7 @@ defineExpose({ focus: () => input.value.focus() })
     <input
         ref="input"
         :value="modelValue"
-        class="u-field-styles h-field"
+        class="u-field-styles"
         @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     >
 </template>

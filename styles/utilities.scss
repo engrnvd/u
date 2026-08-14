@@ -22,7 +22,7 @@
     }
 
     .u-field-styles {
-        @apply rounded-field border-field bg-bg px-field-x outline-none ring-0;
+        @apply rounded-field border-field bg-bg px-field-x h-field outline-none ring-0;
 
         &:focus, &:focus-within {
             @apply border-primary;

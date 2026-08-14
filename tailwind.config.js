@@ -75,7 +75,6 @@ module.exports = {
             },
             spacing: {
                 'field-x': 'var(--field-padding-x)',
-                'field-y': 'var(--field-padding-y)',
                 'menu-y': 'var(--menu-item-padding-y)',
             },
             borderWidth: {
