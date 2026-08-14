@@ -83,6 +83,9 @@ module.exports = {
             height: {
                 'field': 'var(--field-height)',
             },
+            width: {
+                'field': 'var(--field-height)',
+            },
             keyframes: {
                 wiggle: {
                     '0%, 100%': { transform: 'rotate(-3deg)' },

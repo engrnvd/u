@@ -26,8 +26,8 @@ const classes = computed(() => ({
     [`bg-${p.color} hover:bg-${p.color}-dark`]: !p.transparent,
     [`hover:bg-${p.color}-lighter`]: p.transparent,
     'ripple-dark': p.color === 'neutral' || p.transparent,
-    'rounded-md px-field-x py-2 min-w-20': !p.icon,
-    'size-[2em] rounded-full justify-center': p.icon,
+    'rounded-md px-field-x py-2 min-w-20 h-field': !p.icon,
+    'h-field w-field rounded-full justify-center': p.icon,
 }))
 
 </script>
@@ -37,7 +37,7 @@ const classes = computed(() => ({
                v-ripple
                :class="classes"
                :disabled="loading || disabled"
-               class="relative all-center text-sm font-semibold uppercase leading-4 tracking-widest transition duration-150 ease-in-out focus:outline-none active:shadow-none disabled:bg-neutral-darker disabled:text-muted disabled:cursor-not-allowed disabled:shadow-none hover:filter-none">
+               class="relative all-center font-semibold uppercase leading-4 tracking-widest transition duration-150 ease-in-out focus:outline-none active:shadow-none disabled:bg-neutral-darker disabled:text-muted disabled:cursor-not-allowed disabled:shadow-none hover:filter-none">
         <span :class="{'opacity-0': loading}" class="all-center"><slot/></span>
         <span v-if="loading" class="absolute inset-0 all-center">
             <LoadingIcon class="absolute animate-spin"/>

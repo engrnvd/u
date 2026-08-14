@@ -7,6 +7,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   root: './examples',
+  server: {
+    host: true,
+  },
   build: {
     sourcemap: true,
   },
