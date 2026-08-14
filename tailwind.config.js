@@ -81,6 +81,9 @@ module.exports = {
             borderWidth: {
                 'field': 'var(--form-element-border-width)',
             },
+            height: {
+                'field': 'var(--field-height)',
+            },
             keyframes: {
                 wiggle: {
                     '0%, 100%': { transform: 'rotate(-3deg)' },

@@ -14,7 +14,7 @@ const emit = defineEmits([...inputEmits])
             :disabled="$attrs['disabled']"
             :placeholder="$attrs['placeholder']"
             :value="modelValue"
-            class="rounded-field border-field focus:border-primary outline-none ring-0 bg-bg px-field-x py-field-y w-full min-h-24"
+            class="u-field-styles py-field-y w-full min-h-24"
             rows="3"
             @input="e => emit('update:modelValue', e.target.value)"
         ></textarea>

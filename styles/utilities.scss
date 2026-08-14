@@ -20,4 +20,12 @@
             @apply bg-[var(--active-overlay)]
         }
     }
+
+    .u-field-styles {
+        @apply rounded-field border-field bg-bg px-field-x outline-none ring-0;
+
+        &:focus, &:focus-within {
+            @apply border-primary;
+        }
+    }
 }
