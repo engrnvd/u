@@ -98,7 +98,7 @@ let canAddFiles = computed(() => !props.disabled && props.files.length < props.m
 <template>
     <div
         :class="{'!text-danger !border-danger': wrongType, 'cursor-not-allowed': !canAddFiles}"
-        class="relative overflow-hidden rounded-field border-2 p-4 group text-muted focus-within:border-primary"
+        class="relative overflow-hidden rounded-field border-field p-4 group text-muted focus-within:border-primary"
         @click="blockOnTiles"
     >
         <input

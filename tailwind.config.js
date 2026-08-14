@@ -78,6 +78,9 @@ module.exports = {
                 'field-y': 'var(--field-padding-y)',
                 'menu-y': 'var(--menu-item-padding-y)',
             },
+            borderWidth: {
+                'field': 'var(--form-element-border-width)',
+            },
             keyframes: {
                 wiggle: {
                     '0%, 100%': { transform: 'rotate(-3deg)' },
