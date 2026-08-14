@@ -72,6 +72,11 @@ module.exports = {
                 'lg': '1.25rem',
                 'full': '9999px',
             },
+            spacing: {
+                'field-x': 'var(--field-padding-x)',
+                'field-y': 'var(--field-padding-y)',
+                'menu-y': 'var(--menu-item-padding-y)',
+            },
             keyframes: {
                 wiggle: {
                     '0%, 100%': { transform: 'rotate(-3deg)' },
