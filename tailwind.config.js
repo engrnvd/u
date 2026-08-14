@@ -71,6 +71,7 @@ module.exports = {
                 DEFAULT: 'var(--border-radius)',
                 'lg': '1.25rem',
                 'full': '9999px',
+                'field': 'var(--form-element-border-radius)',
             },
             spacing: {
                 'field-x': 'var(--field-padding-x)',
