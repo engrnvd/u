@@ -11,12 +11,12 @@ const emit = defineEmits([...inputEmits])
 <template>
     <UFormElement :errors="errors" :help-text="helpText" class="u-textarea">
         <textarea
-            :disabled="$attrs['disabled']"
-            :placeholder="$attrs['placeholder']"
+            :disabled="$attrs['disabled'] as boolean | undefined"
+            :placeholder="$attrs['placeholder'] as string | undefined"
             :value="modelValue"
             class="u-field-styles py-2 w-full min-h-24"
             rows="3"
-            @input="e => emit('update:modelValue', e.target.value)"
+            @input="e => emit('update:modelValue', (e.target as HTMLTextAreaElement).value)"
         ></textarea>
     </UFormElement>
 </template>
