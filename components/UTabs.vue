@@ -26,7 +26,7 @@ let emit = defineEmits(['update:modelValue'])
                 <div class="px-6 py-2 font-bold">{{ item[titleField] || item }}</div>
             </slot>
         </UTabBtn>
-        <div class="flex-grow border-b flex items-center">
+        <div class="flex-grow border-b bg-bg flex items-center">
             <slot name="end"></slot>
         </div>
     </div>

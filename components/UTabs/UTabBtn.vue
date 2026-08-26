@@ -16,7 +16,7 @@ let classes = computed(() => ({
 
 <template>
     <div :class="classes"
-         class="select-none rounded-tl rounded-tr border">
+         class="select-none rounded-tl rounded-tr border bg-bg">
         <slot></slot>
     </div>
 </template>
